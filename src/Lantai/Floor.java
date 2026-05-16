@@ -2,12 +2,12 @@ package Lantai;
 import System.EnemyFactory;
 import System.*;
 import MakhlukHidup.*;
+import java.util.Scanner;
 /**
  * referansi lantai dungeon
  */
 public class Floor{
     private int nomorLantai;
-    private BattleRoom RuanganBattleSekarang; //
     private BossRoom RuanganBoss; //hanya untuk lantai 5
     private int perhitunganBattle;
     private static final int jumlahRuangan = 5; //ada 5 lantai
@@ -29,10 +29,6 @@ public class Floor{
     
     public int getNomorLantai() {
         return nomorLantai;
-    }
-
-    public BattleRoom getRuanganBattle() {
-        return RuanganBattleSekarang;
     }
 
     public BossRoom getRuanganBoss() {
@@ -95,5 +91,17 @@ public class Floor{
      */
     public void saatLantaiClear() {
         
+    }
+    
+    public boolean run(Hero player, BattleSystem sistemBattle, Scanner input) {
+        return false;
+    }
+    
+    public boolean runbossRoom(Hero player, BattleSystem sistemBattle) {
+        return false;
+    }
+    
+    public int getChoicePlayer(Scanner input, int min, int max) {
+        return 0;
     }
 }

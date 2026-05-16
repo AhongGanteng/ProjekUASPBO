@@ -18,6 +18,8 @@ public abstract class Weapon extends Item {
     public void setBonusSerangan(int bonusSerangan) {
         this.bonusSerangan = bonusSerangan;
     }
+    
+    public abstract String getJenisSenjata();
     @Override
     public String getItemType () {
         return null;
