@@ -25,18 +25,18 @@ public class EnemyFactory {
      * @return 
      */
     public static Enemy bangunSlime() {
-        return new Slime(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        return new Monster(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
     }
     public static Enemy bangunGoblin() {
-        return new Goblin(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        return new Monster(10, "Small heal potion", 0.5, 2, "Goblin", 30, 5, 1);
     }
     public static Enemy bangunSkeleton() {
-        return new Skeleton(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        return new Monster(10, "Small heal potion", 0.5, 3, "Skeleton", 30, 5, 1);
     }
     public static Enemy bangunDarkKnight() {
-        return new DarkKnight(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        return new Monster(10, "Small heal potion", 0.5, 4, "DarkKnight", 30, 5, 1);
     }
     public static Enemy bangunBossDragon() {
-        return new Dragon(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        return new Monster(10, "Small heal potion", 0.5, 5, "Dragon", 30, 5, 1);
     }
 }

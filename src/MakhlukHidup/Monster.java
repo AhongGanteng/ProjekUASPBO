@@ -1,11 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package MakhlukHidup;
 import Interface.*;
 /**
- * ini monster DarkKnightnya
+ *
+ * @author LENOVO
  */
-public class DarkKnight extends Enemy{
-
-    public DarkKnight(int hadiahExp, String dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
+public class Monster extends Enemy{
+    public Monster(int hadiahExp, String dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
         super(hadiahExp, dropItem, dropChange, lantai, nama, maxHp, serangan, ketahanan);
     }
     
@@ -16,7 +20,7 @@ public class DarkKnight extends Enemy{
     
     @Override
     public String tipeMusuh() {
-        return "DarkKnight";
+        return "Dragon";
     }
     
     @Override

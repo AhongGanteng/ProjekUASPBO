@@ -17,7 +17,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
         this.cooldownSkill = cooldownSkill;
         this.cooldownSekarang = 0;
         this.level = new levelSystem();
-        this.penyimpanan = new Inventory(10); //maksimal 10 item
+        this.penyimpanan = new Inventory(5); //maksimal 10 item
     }
 
     public String getHeroClass() {

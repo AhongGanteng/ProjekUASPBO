@@ -1,4 +1,4 @@
-package Potions;
+package Items;
 import MakhlukHidup.*;
 import Items.*;
 /**
