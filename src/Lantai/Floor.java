@@ -1,4 +1,4 @@
-package Lantai;
+ package Lantai;
 import System.EnemyFactory;
 import System.*;
 import MakhlukHidup.*;
@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Floor{
     private int nomorLantai;
     private BossRoom RuanganBoss; //hanya untuk lantai 5
+    private BattleRoom simpanRuanganBattle;
     private int perhitunganBattle;
     private static final int jumlahRuangan = 5; //ada 5 lantai
     private static final int banyakMusuh = 3;
@@ -33,6 +34,15 @@ public class Floor{
 
     public BossRoom getRuanganBoss() {
         return RuanganBoss;
+    }
+
+    public BattleRoom getSimpanRuanganBattle() {
+        return simpanRuanganBattle;
+    }
+    
+    public BattleRoom buatBattleSelanjutnya() {
+        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
+        return simpanRuanganBattle = new BattleRoom(musuh);
     }
     /**
      * cek lantai apakah sudah clear

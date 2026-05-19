@@ -11,12 +11,14 @@ public class Inventory {
     private int maxSlots;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
+    private Potion equippedPotion;
     
     public Inventory(int maxSlots) {
         this.items = new ArrayList<>();
         this.maxSlots = maxSlots;
         this.equippedWeapon = null;
         this.equippedArmor = null;
+        Potion equippedPotion1 = null;
     }
 
     public List<Item> getItems() {
@@ -119,5 +121,31 @@ public class Inventory {
             return 0;
         }
     }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
+    public Armor getEquippedArmor() {
+        return equippedArmor;
+    }
+
+    public void setEquippedArmor(Armor equippedArmor) {
+        this.equippedArmor = equippedArmor;
+    }
+
+    public Potion getEquippedPotion() {
+        return equippedPotion;
+    }
+
+    public void setEquippedPotion(Potion equippedPotion) {
+        this.equippedPotion = equippedPotion;
+    }
+    
+    
     
 }

@@ -6,7 +6,7 @@ import MakhlukHidup.*;
 public abstract class Weapon extends Item {
     private int bonusSerangan; //bonus ketahananannya
 
-    public Weapon(String nama, String rarity, int bonusSerangan) {
+    public Weapon(String nama, String rarity, String classKhusus, int bonusSerangan) {
         super(nama, rarity);
         this.bonusSerangan = bonusSerangan;
     }
@@ -20,9 +20,10 @@ public abstract class Weapon extends Item {
     }
     
     public abstract String getJenisSenjata();
+    
     @Override
     public String getItemType () {
-        return null;
+        return "Weapon";
     } 
     @Override
     public void pake (Hero target) {

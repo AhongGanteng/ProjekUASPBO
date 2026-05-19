@@ -8,8 +8,8 @@ package Items;
  * @author LENOVO
  */
 public class Sword extends Weapon{
-    public Sword(String nama, String rarity, int bonusKetahanan) {
-        super(nama, rarity, bonusKetahanan);
+    public Sword(String nama, String rarity, String classKhusus, int bonusKetahanan) {
+        super(nama, rarity, classKhusus, bonusKetahanan);
     }
     
     @Override
@@ -18,19 +18,19 @@ public class Sword extends Weapon{
     }
     
     public static Sword Default() {
-        return new Sword("", "", 3);
+        return new Sword("", "", "Warrior", 3);
     }
     
     public static Sword biasa() {
-        return new Sword("", "", 5);
+        return new Sword("", "", "Warrior", 5);
     }
     
     public static Sword langka() {
-        return new Sword("", "", 8);
+        return new Sword("", "", "Warrior", 8);
     }
     
     public static Sword epic() {
-        return new Sword("", "", 10);
+        return new Sword("", "", "Warrior", 10);
     }
     
     @Override
