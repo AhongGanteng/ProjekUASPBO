@@ -62,11 +62,6 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public void showStatus() {
         
     }
-    //tampilkan deskripsi player
-    @Override
-    public String getDeskripsi() {
-        return null;
-    }
     //skill yang berbeda untuk setiap class hero
     public abstract void useSkill(Attackable target);
     //nama skill yang berbeda untuk setiap class hero

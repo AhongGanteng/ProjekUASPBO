@@ -46,6 +46,11 @@ public class Archer extends Hero{
     public String getNamaSkill() {
         return null;
     }
+    //tampilkan deskripsi player
+    @Override
+    public String getDeskripsi() {
+        return null;
+    }
     /**
      * hal yang bisa mengaktifkan skill pasif class Archer
      */

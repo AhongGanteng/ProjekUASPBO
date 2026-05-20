@@ -19,9 +19,10 @@ public class Monster extends Enemy{
         return "Dragon";
     }
     
+    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
-        return "blabla";
+        return null;
     }
     @Override
     public boolean isAlive() {

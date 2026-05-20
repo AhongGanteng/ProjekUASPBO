@@ -31,10 +31,6 @@ public abstract class Item implements Deskripsi, BisaDipake{
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
-    @Override
-    public String getDeskripsi() {
-       return "(" + rarity + ") " + nama;
-    }
     
     @Override
     public void showStatus(){

@@ -31,8 +31,4 @@ public abstract class Room implements Deskripsi{
     public void showStatus() {
         
     }
-    @Override
-    public String getDeskripsi() {
-        return null;
-    }
 }

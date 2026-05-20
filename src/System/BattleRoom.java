@@ -20,6 +20,7 @@ public class BattleRoom extends Room{
     public void enter(Hero player){
         
     }
+    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
         return null;

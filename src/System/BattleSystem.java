@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package System;
 import MakhlukHidup.*;
 import Items.*;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author LENOVO
@@ -18,11 +16,33 @@ public class BattleSystem {
     }
     
     public boolean mulaiBattle(Hero player, Enemy musuh) {
-        return false;
+        player.resetCooldown();
+        tampilIntroBattle(player, musuh);
+        System.out.println("");
+        return true;
     }
     
     public boolean giliranPlayer(Hero player, Enemy musuh) {
-        return false;
+        System.out.println("========================");
+        System.out.println("     GILIRAN PLAYER");
+        System.out.println("========================");
+        
+        player.showStatus();
+        System.out.println("");
+        musuh.showStatus();
+        System.out.println("");
+        
+        tampilActionMenu(player);
+        int pilih = getPlayerChoise(1, 4);
+        System.out.println("");
+        
+        switch(pilih) {
+            case 1 -> player.serang(musuh);
+            case 2 -> aturSkillHero(player, musuh);
+            case 3 -> aturPotionHero(player, musuh);
+        }
+        
+        return true;
     }
     
     public void tampilActionMenu(Hero player) {
@@ -30,11 +50,38 @@ public class BattleSystem {
     }
     
     public void aturSkillHero(Hero player, Enemy musuh) {
-        
+        if (!player.isSkillReady()) {
+            System.out.println("Skill belum ready, akan diganti dengan serangan biasa");
+            player.serang(musuh);
+        } else {
+            player.useSkill(musuh);
+        }
     }
     
-    public void aturPotionHero(Hero player, Enemy musuh) {
+    public boolean aturPotionHero(Hero player, Enemy musuh) {
         
+        List<HealthPotion> ramuan = new ArrayList<>();
+        for (Item i : player.getPenyimpanan().getItems()) {
+            if (i instanceof HealthPotion p) {
+                ramuan.add(p);
+            }
+        }
+        if (ramuan.isEmpty()) {
+            System.out.println("Ramuan tidak tersedia");
+            return false;
+        }
+        System.out.println("Pilih potion:");
+        for (int i = 0; i < ramuan.size(); i++) {
+            System.out.printf("  [%d] %s%n", ramuan.get(i).getDeskripsi());
+        }
+        System.out.println("  [0]. Batal");
+        int pilih = getPlayerChoise(0, ramuan.size());
+        if (pilih == 0) {
+            System.out.println("Dibatalkan");
+            return false;
+        }
+        player.getPenyimpanan().usePotion(ramuan.get(pilih - 1), player);
+        return true;
     }
     
     public boolean giliranMusuh(Hero player, Enemy musuh) {
@@ -49,7 +96,7 @@ public class BattleSystem {
         
     }
     
-    public void tampilIntroBattle() {
+    public void tampilIntroBattle(Hero player, Enemy musuh) {
         
     } 
     
