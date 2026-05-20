@@ -57,12 +57,24 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public boolean isAlive() {
         return getHp() > 0;
     }
-    //tampilkan status player
+   /**
+    * nama, hp, level, exp, attack, deffence
+    * status ditampilkan saat permainan berlangsung
+    * mencetak tampilan tabel
+    */
     @Override
     public void showStatus() {
-        
+        System.out.println(""); //panggil nama dari GameManajer
+        System.out.println(""); //darah/hp dari Entity
+        System.out.println(""); //level dari Entity
+        System.out.println(""); //attack dari Entitiy
+        System.out.println(""); //deffence dari Entity
     }
-    //tampilkan deskripsi player
+    /**
+     * tampilkan deskripsi player setelah permainan
+     * tampilkan hasil dari sout
+     * @return 
+     */
     @Override
     public String getDeskripsi() {
         return null;
