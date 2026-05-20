@@ -18,10 +18,14 @@ public class BattleRoom extends Room{
     
     @Override
     public void enter(Hero player){
-        
+        System.out.println("-- Memasuki Battle Room --");
+        System.out.println("Musuh   : " + enemy.getNama());
+        System.out.println("HP musuh: " + enemy.getHp() + " / " + enemy.getMaxHp());
+        System.out.println("==========================");
     }
+    
     @Override
     public String getDeskripsi() {
-        return null;
+        return "Battle Room - Musuh: " + enemy.getNama() + " (HP " + enemy.getHp() + ")";
     }
 }
