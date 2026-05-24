@@ -35,9 +35,14 @@ public abstract class Item implements Deskripsi, BisaDipake{
     public String getDeskripsi() {
        return "(" + rarity + ") " + nama;
     }
-    
+ 
     @Override
     public void showStatus(){
-        
+        System.out.println("\nItem");
+        System.out.println("Nama :" + nama);
+        System.out.println("Rarity :" + rarity);
+        System.out.println("Tipe :" + getItemType());
     }
+     public abstract String getItemType();
 }
+
