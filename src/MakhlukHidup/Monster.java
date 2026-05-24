@@ -5,7 +5,7 @@ import Interface.*;
  * @author LENOVO
  */
 public class Monster extends Enemy{
-    public Monster(int hadiahExp, String dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
+    public Monster(int hadiahExp, Item{} dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
         super(hadiahExp, dropItem, dropChange, lantai, nama, maxHp, serangan, ketahanan);
    
     
