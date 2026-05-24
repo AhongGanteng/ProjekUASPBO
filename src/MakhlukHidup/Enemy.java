@@ -1,9 +1,12 @@
 package MakhlukHidup;
+
 import Interface.*;
+
 /**
  * class parent untuk setiap obyek enemy yang ada
  */
-public abstract class Enemy extends Entity implements Attackable, Deskripsi{
+public abstract class Enemy extends Entity implements Attackable, Deskripsi {
+
     private int hadiahExp; //jumlah hadiah exp saat dikalahkan
     private String dropItem; //item yang di drop (jatuhkan)
     private double dropChange; //kesempatan drop item
@@ -48,8 +51,10 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
     public void setLantai(int lantai) {
         this.lantai = lantai;
     }
+
     /**
      * damage serangan yang diberikan oleh obyek enemy
+     *
      * @param target, target nya itu player
      */
     @Override
@@ -57,8 +62,10 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         int damage = Math.max(1, getSerangan());
         target.kenaDamage(damage);
     }
+
     /**
      * damage serangan yang diterima oleh obyek enemy
+     *
      * @param damage, damage yang diberikan oleh player
      */
     @Override
@@ -66,21 +73,35 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         int tahan = Math.max(1, damage - getKetahanan());
         setHp(getHp() - tahan);
     }
+
     /**
      * cek apakah obyek enemy masih hidup
-     * @return hp > 0 
+     *
+     * @return hp > 0
      */
     @Override
     public boolean isAlive() {
         return getHp() > 0;
     }
+
     /**
      * cek apakah obyek enemy yang dikalahkan akan drop item
+     *
      * @return true jika item di drop
      */
     public boolean rollDrop() {
         return dropItem != null && Math.random() < dropChange;
     }
+
+    @Override
+    public void showStatus() {
+        System.out.println("===== ENEMY =====");
+        System.out.println("Nama      : " + getNama());
+        System.out.println("HP        : " + getHp() + "/" + getMaxHp());
+        System.out.println("Serangan  : " + getSerangan());
+        System.out.println("Ketahanan : " + getKetahanan());
+    }
+
     /**
      * @return tipe musuh ("GOBLIN", dll)
      */
