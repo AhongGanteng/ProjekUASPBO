@@ -15,6 +15,9 @@ public class BattleRoom extends Room{
     public Enemy getEnemy() {
         return enemy;
     }
+    public boolean run(Hero player, BattleSystem sistemBattle){
+        return sistemBattle.mulaiBattle(player, enemy);
+    }
     
     @Override
     public void enter(Hero player){
@@ -22,6 +25,6 @@ public class BattleRoom extends Room{
     }
     @Override
     public String getDeskripsi() {
-        return null;
+        return "Ruangan battle melawan monster";
     }
 }
