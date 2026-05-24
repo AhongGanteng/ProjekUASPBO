@@ -3,6 +3,7 @@ package Items;
  * Parent class untuk weapon, armor dan potion
  */
 import Interface.*;
+import MakhlukHidup.*;
 /**
  * mengimplements dari class Deskripsi dan BisaDipake
  * @author LENOVO
@@ -34,6 +35,11 @@ public abstract class Item implements Deskripsi, BisaDipake{
     
     @Override
     public void showStatus(){
+        
+    }
+    
+    @Override 
+    public void pake(Hero player) {
         
     }
 }

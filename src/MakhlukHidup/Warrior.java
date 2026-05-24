@@ -69,4 +69,13 @@ public class Warrior extends Hero{
     public String getDeskripsi() {
         return null;
     }
+
+    @Override
+    public void resetPasif() {
+        if (getHp() < getMaxHp() * 0.5) {
+            darahTersisaSetengah = false;
+        } else {
+            darahTersisaSetengah = true;
+        }
+    }
 }

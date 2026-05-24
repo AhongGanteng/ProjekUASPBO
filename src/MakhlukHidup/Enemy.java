@@ -1,15 +1,16 @@
 package MakhlukHidup;
 import Interface.*;
+import Items.*;
 /**
  * class parent untuk setiap obyek enemy yang ada
  */
 public abstract class Enemy extends Entity implements Attackable, Deskripsi{
     private int hadiahExp; //jumlah hadiah exp saat dikalahkan
-    private String dropItem; //item yang di drop (jatuhkan)
+    private Item[] dropItem; //item yang di drop (jatuhkan)
     private double dropChange; //kesempatan drop item
     private int lantai; //lantai tempat enemy muncul
 
-    public Enemy(int hadiahExp, String dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
+    public Enemy(int hadiahExp, Item[] dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
         super(nama, maxHp, serangan, ketahanan);
         this.hadiahExp = hadiahExp;
         this.dropItem = dropItem;
@@ -21,7 +22,7 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         return hadiahExp;
     }
 
-    public String getDropItem() {
+    public Item[] getDropItem() {
         return dropItem;
     }
 
@@ -37,7 +38,7 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         this.hadiahExp = hadiahExp;
     }
 
-    public void setDropItem(String dropItem) {
+    public void setDropItem(Item[] dropItem) {
         this.dropItem = dropItem;
     }
 
@@ -78,8 +79,15 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
      * cek apakah obyek enemy yang dikalahkan akan drop item
      * @return true jika item di drop
      */
-    public boolean rollDrop() {
-        return dropItem != null && Math.random() < dropChange;
+    public Item rollDrop() {
+        if (dropItem.length == 0 || dropItem == null) {
+            return null;
+        }
+        if (Math.random() > dropChange) {
+            return null;
+        }
+        int indeks = (int)(Math.random() * dropItem.length);
+        return dropItem[indeks];
     }
     /**
      * @return tipe musuh ("GOBLIN", dll)

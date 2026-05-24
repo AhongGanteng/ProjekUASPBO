@@ -65,4 +65,9 @@ public class Archer extends Hero{
     public void getNamaPasif() {
         
     }
+    
+    @Override 
+    public void resetPasif() {
+        
+    }
 }

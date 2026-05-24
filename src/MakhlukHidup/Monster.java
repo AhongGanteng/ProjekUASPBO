@@ -1,11 +1,12 @@
 package MakhlukHidup;
 import Interface.*;
+import Items.*;
 /**
  *
  * @author LENOVO
  */
 public class Monster extends Enemy{
-    public Monster(int hadiahExp, String dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
+    public Monster(int hadiahExp, Item[] dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
         super(hadiahExp, dropItem, dropChange, lantai, nama, maxHp, serangan, ketahanan);
     }
     
@@ -16,7 +17,7 @@ public class Monster extends Enemy{
     
     @Override
     public String tipeMusuh() {
-        return "Dragon";
+        return "Monster";
     }
     
     //tampilkan deskripsi player

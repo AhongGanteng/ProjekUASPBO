@@ -33,6 +33,7 @@ public class Sword extends Weapon{
         return new Sword("Dragon slayer", "Epic", "Warrior", 10);
     }
     
+    
     @Override
     public String getJenisSenjata() {
         return "Sword";

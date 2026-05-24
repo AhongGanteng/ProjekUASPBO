@@ -70,6 +70,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public abstract void triggerPasif();
     //nama pasif unik dari setiap class hero
     public abstract void getNamaPasif();
+    public abstract void resetPasif();
     
     /**
      * skill akan cooldown setelah dipakai
@@ -104,4 +105,13 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public void dapatExp(int xp, Hero target) {
         level.tambahExp(xp, target);
     }
+
+    public int getCooldownSkill() {
+        return cooldownSkill;
+    }
+
+    public int getCooldownSekarang() {
+        return cooldownSekarang;
+    }
+    
 }
