@@ -114,4 +114,9 @@ public class Floor{
     public int getChoicePlayer(Scanner input, int min, int max) {
         return 0;
     }
+
+    public static int getJumlahRuangan() {
+        return jumlahRuangan;
+    }
+    
 }
