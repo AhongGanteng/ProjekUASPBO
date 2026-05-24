@@ -1,6 +1,7 @@
 package System;
 import MakhlukHidup.*;
 import Interface.*;
+import Items.*;
 /**
  * semacam sistem untuk spawn monster
  */
@@ -25,18 +26,23 @@ public class EnemyFactory {
      * @return 
      */
     public static Enemy bangunSlime() {
-        return new Monster(10, "Small heal potion", 0.5, 1, "Slime", 30, 5, 1);
+        Item[] dropItem = {HealthPotion.Biasa(), HealthPotion.Langka(), HealthPotion.Epic()};
+        return new Monster(10, dropItem, 0.5, 1, "Slime", 30, 5, 1);
     }
     public static Enemy bangunGoblin() {
-        return new Monster(10, "Small heal potion", 0.5, 2, "Goblin", 30, 5, 1);
+        Item[] dropItem = {Sword.biasa(), Busur.biasa(), Sword.langka(), Busur.langka()};
+        return new Monster(10, dropItem, 0.5, 2, "Goblin", 30, 5, 1);
     }
     public static Enemy bangunSkeleton() {
-        return new Monster(10, "Small heal potion", 0.5, 3, "Skeleton", 30, 5, 1);
+        Item[] dropItem = {Jubah.biasa(), Jubah.langka(), Jubah.epic()};
+        return new Monster(10, dropItem, 0.5, 3, "Skeleton", 30, 5, 1);
     }
     public static Enemy bangunDarkKnight() {
-        return new Monster(10, "Small heal potion", 0.5, 4, "DarkKnight", 30, 5, 1);
+        Item[] dropItem = {Sword.epic(), Busur.epic(), HealthPotion.Epic()};
+        return new Monster(10, dropItem, 0.5, 4, "DarkKnight", 30, 5, 1);
     }
     public static Enemy bangunBossDragon() {
-        return new Monster(10, "Small heal potion", 0.5, 5, "Dragon", 30, 5, 1);
+        Item[] dropItem = {};
+        return new Monster(10, dropItem, 0.5, 5, "Dragon", 30, 5, 1);
     }
 }
