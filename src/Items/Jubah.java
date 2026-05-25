@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Items;
+import Items.*;
 /**
  *
  * @author LENOVO
@@ -19,18 +20,20 @@ public class Jubah extends Armor{
     }
     
     public static Jubah Default() {
-        return new Jubah("", "", 3);
+        return new Jubah("Jubah Kain Tua", "Default", 3);
     }
     
     public static Jubah biasa() {
-        return new Jubah("", "", 5);
+        return new Jubah("Jubah Pemburu", "biasa", 5);
     }
     
     public static Jubah langka() {
-        return new Jubah("", "", 8);
+        return new Jubah("Jubah Bayangan", "langka", 8);
     }
     
     public static Jubah epic() {
-        return new Jubah("", "", 10);
+        return new Jubah("Jubah Naga Api", "epic", 10);
     }
+    
+   
 }

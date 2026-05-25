@@ -29,20 +29,10 @@ public abstract class Room implements Deskripsi{
     
     @Override
     public void showStatus() {
-        String status;
-        if (isClear()){
-            status = "Clear";
-        } else status = "Not clear";
-        System.out.println("Status  : " + status);
+        
     }
-    
     @Override
     public String getDeskripsi() {
-        String status;
-        if (isClear()){
-            status = "Clear";
-        } else status = "Not clear";
-
-        return namaLantai  +" - " + status;
+        return null;
     }
 }

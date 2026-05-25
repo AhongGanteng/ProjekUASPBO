@@ -1,6 +1,6 @@
 package Items;
 import MakhlukHidup.*;
-
+import Items.*;
 /**
  * potion untuk memulihkan darah player
  * small heal potion = pulihin 30 darah
@@ -8,7 +8,7 @@ import MakhlukHidup.*;
  * mega heal potion = pulihin 100 darah
  */
 public class HealthPotion extends Potion{
-    private final int jumlahPemulihan;
+    private int jumlahPemulihan;
 
     public HealthPotion(int jumlahPemulihan, int quantity, String nama, String rarity) {
         super(quantity, nama, rarity);
@@ -18,16 +18,14 @@ public class HealthPotion extends Potion{
     public int getJumlahPemulihan() {
         return jumlahPemulihan;
     }
-    
     @Override
     public void terimaEfek(Hero target) {
-        target.heal(jumlahPemulihan);
-        System.out.println(target.getNama() + " memulihkan " + jumlahPemulihan + " HP!");
+        
     }
     
     @Override
     public String getDeskripsi() {
-        return "[" + getRarity() + "] " + getNama() + " (heal " + jumlahPemulihan + ")";
+        return "Ahong ganteng";
     }
     
     public static HealthPotion Biasa () {
@@ -35,10 +33,10 @@ public class HealthPotion extends Potion{
     } 
     
     public static HealthPotion Langka () {
-        return new HealthPotion(60, 1, "Big heal potion", "Langka");
+        return new HealthPotion(60, 1, "big heal potion", "Langka");
     } 
     
     public static HealthPotion Epic () {
-        return new HealthPotion(100, 1, "Mega heal potion", "Epic");
+        return new HealthPotion(100, 1, "Mega heal potion", "Biasa");
     } 
 }
