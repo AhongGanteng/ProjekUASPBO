@@ -5,26 +5,17 @@ import System.*;
 import MakhlukHidup.*;
 import java.util.Scanner;
 
-/**
- * referansi lantai dungeon
- */
 public class Floor {
 
     private int nomorLantai;
-    private BossRoom RuanganBoss; //hanya untuk lantai 5
+    private BossRoom RuanganBoss;
     private BattleRoom simpanRuanganBattle;
     private int perhitunganBattle;
-    private static final int jumlahRuangan = 5; //ada 5 lantai
+    private static final int jumlahRuangan = 5;
     private static final int banyakMusuh = 3;
 
-    /**
-     * pokoknya kontruktor
-     *
-     * @param nomorLantai
-     */
     public Floor(int nomorLantai) {
         this.nomorLantai = nomorLantai;
-        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
         this.perhitunganBattle = 0;
         if (isFinalFloor()) {
             this.RuanganBoss = new BossRoom(EnemyFactory.bangunBossDragon());
@@ -37,18 +28,22 @@ public class Floor {
         return nomorLantai;
     }
 
+    public static int getJumlahRuangan() {
+        return jumlahRuangan;
+    }
+
     public class BossRoom {
-    private Enemy boss;
 
-    public BossRoom(Enemy boss) {
-        this.boss = boss;
-    }
+        private Enemy boss;
 
-    public boolean run(Hero player, BattleSystem sistemBattle) {
-        // logic battle boss
-        return true;
+        public BossRoom(Enemy boss) {
+            this.boss = boss;
+        }
+
+        public boolean run(Hero player, BattleSystem sistemBattle) {
+            return sistemBattle.mulaiBattle(player, boss);
+        }
     }
-}
 
     public BattleRoom getSimpanRuanganBattle() {
         return simpanRuanganBattle;
@@ -162,7 +157,6 @@ public class Floor {
         }
         System.out.println(" Boss Room");
         return RuanganBoss.run(player, sistemBattle);
-
     }
 
     public int getChoicePlayer(Scanner input, int min, int max) {
@@ -177,7 +171,6 @@ public class Floor {
             }
 
             System.out.println("Input tidak valid");
-
         }
     }
 }

@@ -1,10 +1,14 @@
 package System;
+
 import MakhlukHidup.*;
+
 /**
- *ini untuk class ruangan boss yang isinya boss dungeon
+ * ini untuk class ruangan boss yang isinya boss dungeon
+ *
  * @author LENOVO
  */
-public class BossRoom extends Room{
+public class BossRoom extends Room {
+
     private Enemy boss;
 
     public BossRoom(Enemy boss) {
@@ -15,13 +19,15 @@ public class BossRoom extends Room{
     public Enemy getBoss() {
         return boss;
     }
-    
+
     @Override
-    public void enter(Hero player){
-        
+    public void enter(Hero player) {
+
     }
+
+    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
-        return null;
+        return "Ruangan Boss yang menakutkan!";
     }
 }

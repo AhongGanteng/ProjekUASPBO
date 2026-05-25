@@ -1,10 +1,13 @@
 package MakhlukHidup;
+
 import Interface.*;
 import System.*;
+
 /**
  * class parent untuk class Warrior, Archer, dan Mage
  */
-public abstract class Hero extends Entity implements Attackable, Deskripsi{
+public abstract class Hero extends Entity implements Attackable, Deskripsi {
+
     private String heroClass; //tipe class yang player pilih
     private int cooldownSkill; //lama jeda waktu penggunaan skill
     private int cooldownSekarang; //jeda waktu penggunaan skill sekarang
@@ -31,17 +34,21 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public Inventory getPenyimpanan() {
         return penyimpanan;
     }
+
     /**
      * damage serangan yang diberikan oleh player
+     *
      * @param target, targetnya adalah obyek Enemy
      */
     @Override
-    public void serang (Attackable target) {
+    public void serang(Attackable target) {
         int damage = getSerangan() + penyimpanan.getWeaponAtkBonus();
         target.kenaDamage(damage);
     }
+
     /**
      * damage serangan yang diterima oleh player
+     *
      * @param damage, damage yang obyek enemy berikan
      */
     @Override
@@ -49,64 +56,77 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
         int tahan = Math.max(1, damage - (getKetahanan() - penyimpanan.getArmorDefBonus()));
         setHp(getHp() - tahan);
     }
+
     /**
      * cek apakah masih hidup
+     *
      * @return hp > 0
      */
     @Override
     public boolean isAlive() {
         return getHp() > 0;
     }
+
     //tampilkan status player
-    @Override
     public void showStatus() {
-        
+
     }
-    //tampilkan deskripsi player
-    @Override
-    public String getDeskripsi() {
-        return null;
-    }
+
     //skill yang berbeda untuk setiap class hero
     public abstract void useSkill(Attackable target);
+
     //nama skill yang berbeda untuk setiap class hero
     public abstract String getNamaSkill();
+
     //hal yang bisa mengaktifkan skill pasif
     public abstract void triggerPasif();
+
     //nama pasif unik dari setiap class hero
     public abstract void getNamaPasif();
-    
+
+    public abstract void resetPasif();
+
     /**
      * skill akan cooldown setelah dipakai
      */
-    public void resetCooldown () {
+    public void resetCooldown() {
         this.cooldownSekarang = this.cooldownSkill;
     }
-    
+
     /**
      * untuk hitung jeda waktu penggunaan skill
      */
-    
     public void hitungCooldown() {
         if (cooldownSekarang > 0) {
             cooldownSekarang--;
         }
     }
-    
+
     /**
      * cek skill ready untuk dipakai atau tidak
+     *
      * @return jeda waktu penggunaan skill == 0
      */
     public boolean isSkillReady() {
         return cooldownSekarang == 0;
     }
-    
+
     /**
      * sistem leveling lah pokoknya wkwkwk
+     *
      * @param xp
-     * @param player 
+     * @param player
      */
     public void dapatExp(int xp, Hero target) {
         level.tambahExp(xp, target);
     }
+
+    public int getCooldownSkill() {
+        return cooldownSkill;
+    }
+
+    public int getCooldownSekarang() {
+        return cooldownSekarang;
+    }
+
 }

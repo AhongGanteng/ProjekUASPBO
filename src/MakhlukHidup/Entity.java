@@ -1,8 +1,10 @@
 package MakhlukHidup;
+
 /**
  * class parent untuk setiap makhluk hidup yang ada
  */
 public abstract class Entity {
+
     private String nama; //nama makhluk hidup 
     private int hp; //darah saat ini
     private int maxHp; //darah maksimum
@@ -40,6 +42,7 @@ public abstract class Entity {
     public void setNama(String nama) {
         this.nama = nama;
     }
+
     //hp saat ini tidak boleh negatif
     public void setHp(int hp) {
         this.hp = Math.max(0, hp);
@@ -56,20 +59,25 @@ public abstract class Entity {
     public void setKetahanan(int ketahanan) {
         this.ketahanan = ketahanan;
     }
+
     /**
      * heal tidak boleh melebihi jumlah darah maksimum
-     * @param jumlah 
+     *
+     * @param jumlah
      */
     public void heal(int jumlah) {
         this.hp = Math.min(this.hp + jumlah, maxHp);
     }
+
     /**
      * cek kondisi apakah masih hidup
-     * @return 
+     *
+     * @return
      */
-    public boolean isAlive () {
+    public boolean isAlive() {
         return this.hp > 0;
     }
+
     //tampilkan status
     public abstract void showStatus();
 }
