@@ -1,10 +1,13 @@
 package MakhlukHidup;
+
 import Interface.*;
 import Items.*;
+
 /**
  * class parent untuk setiap obyek enemy yang ada
  */
-public abstract class Enemy extends Entity implements Attackable, Deskripsi{
+public abstract class Enemy extends Entity implements Attackable, Deskripsi {
+
     private int hadiahExp; //jumlah hadiah exp saat dikalahkan
     private Item[] dropItem; //item yang di drop (jatuhkan)
     private double dropChange; //kesempatan drop item
@@ -49,8 +52,10 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
     public void setLantai(int lantai) {
         this.lantai = lantai;
     }
+
     /**
      * damage serangan yang diberikan oleh obyek enemy
+     *
      * @param target, target nya itu player
      */
     @Override
@@ -58,8 +63,10 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         int damage = Math.max(1, getSerangan());
         target.kenaDamage(damage);
     }
+
     /**
      * damage serangan yang diterima oleh obyek enemy
+     *
      * @param damage, damage yang diberikan oleh player
      */
     @Override
@@ -67,16 +74,20 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         int tahan = Math.max(1, damage - getKetahanan());
         setHp(getHp() - tahan);
     }
+
     /**
      * cek apakah obyek enemy masih hidup
-     * @return hp > 0 
+     *
+     * @return hp > 0
      */
     @Override
     public boolean isAlive() {
         return getHp() > 0;
     }
+
     /**
      * cek apakah obyek enemy yang dikalahkan akan drop item
+     *
      * @return true jika item di drop
      */
     public Item rollDrop() {
@@ -86,9 +97,10 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         if (Math.random() > dropChange) {
             return null;
         }
-        int indeks = (int)(Math.random() * dropItem.length);
+        int indeks = (int) (Math.random() * dropItem.length);
         return dropItem[indeks];
     }
+
     /**
      * @return tipe musuh ("GOBLIN", dll)
      */
@@ -101,5 +113,17 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
         System.out.println("HP        : " + getHp() + "/" + getMaxHp());
         System.out.println("Serangan  : " + getSerangan());
         System.out.println("Ketahanan : " + getKetahanan());
+    }
+
+    @Override
+    public String getDeskripsi() {
+        return String.format("[Enemy] %s | LV %d | HP: %d/%d | ATK: %d | DEF: %d | EXP: %d",
+                getNama(),
+                getLantai(),
+                getHp(),
+                getMaxHp(),
+                getSerangan(),
+                getKetahanan(),
+                hadiahExp);
     }
 }
