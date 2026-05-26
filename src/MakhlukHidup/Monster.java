@@ -1,5 +1,6 @@
 package MakhlukHidup;
 import Interface.*;
+import Items.Item;
 /**
  *
  * @author LENOVO
