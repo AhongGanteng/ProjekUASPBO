@@ -113,5 +113,12 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public int getCooldownSekarang() {
         return cooldownSekarang;
     }
-    
+    @Override
+    public String getDeskripsi() {
+        return String.format("%s (%s) | LV %d | HP: %d/%d | ATK: %d | DEF: %d",
+                getNama(), heroClass, level.getLevel(),
+                getHp(), getMaxHp(),
+                getSerangan() + penyimpanan.getWeaponAtkBonus(),
+                getKetahanan() + penyimpanan.getArmorDefBonus());
+    }
 }
