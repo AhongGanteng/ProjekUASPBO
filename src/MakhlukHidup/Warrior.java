@@ -64,11 +64,6 @@ public class Warrior extends Hero{
     public void getNamaPasif() {
         
     }
-    //tampilkan deskripsi player
-    @Override
-    public String getDeskripsi() {
-        return null;
-    }
 
     @Override
     public void resetPasif() {

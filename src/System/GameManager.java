@@ -86,10 +86,10 @@ public class GameManager {
         if (nama.isEmpty()) {
             nama = "Hermawan";
         }
-        Hero pilihan = null; 
+        Hero pilihan =  null; 
         switch (pilih) {
-            case 1 -> new Warrior(nama);
-            default -> new Archer(nama);
+            case 1 -> pilihan = new Warrior(nama);
+            default ->pilihan = new Archer(nama);
         }
         System.out.println("");
         System.out.println("Hero dibuat: " + pilihan.getDeskripsi());
@@ -110,6 +110,7 @@ public class GameManager {
                 input.next();
             }
             pilihan = input.nextInt();
+            input.nextLine();
         } while (pilihan > max || pilihan < min);
         return pilihan;
     }
@@ -123,7 +124,7 @@ public class GameManager {
         System.out.println("");
         tekanEnterUntukContinue();
         
-        for (int lantai = 1; lantai == Floor.getJumlahRuangan(); lantai++) {
+        for (int lantai = 1; lantai <= Floor.getJumlahRuangan(); lantai++) {
             Floor lantaiDungeon = new Floor(lantai);
             boolean selesai = lantaiDungeon.run(player, sistemBattle, input);
             if (!selesai) {

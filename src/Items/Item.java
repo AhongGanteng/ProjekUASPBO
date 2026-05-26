@@ -32,14 +32,17 @@ public abstract class Item implements Deskripsi, BisaDipake{
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
-    
+    @Override
+    public String getDeskripsi() {
+       return "(" + rarity + ") " + nama;
+    }
+ 
     @Override
     public void showStatus(){
-        
+        System.out.println("\nItem");
+        System.out.println("Nama :" + nama);
+        System.out.println("Rarity :" + rarity);
+        System.out.println("Tipe :" + getItemType());
     }
-    
-    @Override 
-    public void pake(Hero player) {
-        
-    }
+     public abstract String getItemType();
 }

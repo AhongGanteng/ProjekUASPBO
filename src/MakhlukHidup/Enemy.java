@@ -93,4 +93,13 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
      * @return tipe musuh ("GOBLIN", dll)
      */
     public abstract String tipeMusuh();
+
+    @Override
+    public void showStatus() {
+        System.out.println("===== ENEMY =====");
+        System.out.println("Nama      : " + getNama());
+        System.out.println("HP        : " + getHp() + "/" + getMaxHp());
+        System.out.println("Serangan  : " + getSerangan());
+        System.out.println("Ketahanan : " + getKetahanan());
+    }
 }
