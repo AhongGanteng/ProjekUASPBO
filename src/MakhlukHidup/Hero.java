@@ -60,7 +60,16 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     //tampilkan status player
     @Override
     public void showStatus() {
-        
+        System.out.println("╔══════════════════════════╗");
+        System.out.println("║      STATUS BATTLE        ║");
+        System.out.println("╠══════════════════════════╣");
+        System.out.printf ("║ Nama  : %-17s║%n", getNama());
+        System.out.printf ("║ Class : %-17s║%n", heroClass);
+        System.out.printf ("║ HP    : %d/%-14d║%n", getHp(), getMaxHp());
+        System.out.printf ("║ ATK   : %-17d║%n", getSerangan());
+        System.out.printf ("║ DEF   : %-17d║%n", getKetahanan());
+        System.out.printf ("║ Skill : %-17s║%n", isSkillReady() ? "READY" : "Cooldown: " + cooldownSekarang);
+        System.out.println("╚══════════════════════════╝");
     }
     //skill yang berbeda untuk setiap class hero
     public abstract void useSkill(Attackable target);
