@@ -1,87 +1,67 @@
 package MakhlukHidup;
-
 import Interface.*;
 import System.*;
-
-public class Archer extends Hero {
-
-    private final double critChange = 0.25;
-    private final int criticalDamage = 2;
-    private boolean pasifAktif = false;
-
+/**
+ * salah satu anak dari class hero, 
+ * senjatanya busur, 
+ * punya pasif peningkatan damage 2 kali lipat dengan kesempatan 25%, 
+ * dan punya skill yaitu damage +80% dan pengurangan defense musuh -3 dengan cooldown 3 turn
+ */
+public class Archer extends Hero{
+    private final double critChange = 0.25; //kesempatan untuk mendapatkan penambahan damage
+    private final int critticalDamage = 2; //damage akan di kali 2
+    /**
+     * nama player
+     * darah warrior = 100
+     * damage serangan = 20
+     * ketahanan = 6
+     * jeda penggunaan skill = 3
+     * @param nama 
+     */
     public Archer(String nama) {
         super(nama, 100, 20, 6, "Archer", 3);
     }
-
+    /**
+     * damage serangan yang diberikan oleh player
+     * @param target, targetnya adalah obyek Enemy
+     */
     @Override
-    public void serang(Attackable target) {
-        int damage = getSerangan() + getPenyimpanan().getWeaponAtkBonus();
-
-        // Pasif: 25% chance untuk critical damage
-        if (Math.random() < critChange) {
-            damage *= criticalDamage;
-            System.out.println(getNama() + " [CRITICAL!] Damage x" + criticalDamage + "!");
-        }
-
-        System.out.println(getNama() + " menyerang dengan busur!");
-        target.kenaDamage(damage);
+    public void serang (Attackable target) {
+        
     }
-
+    /**
+     * Skill yang dimiliki oleh class Warrior
+     * peningkatan damage +80% dan ketahanan musuh -3
+     * @param target, target serangan
+     */
     @Override
     public void useSkill(Attackable target) {
-        if (!isSkillReady()) {
-            System.out.println("Skill sedang cooldown!");
-            return;
-        }
-
-        // Skill: damage +80% dan defense musuh -3
-        int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
-        System.out.println(getNama() + " menggunakan Piercing Arrow! Damage +80%!");
-        target.kenaDamage(damage);
-
-        // Kurangi defense musuh jika target adalah Enemy
-        if (target instanceof Enemy enemy) {
-            int defenseBaru = Math.max(0, enemy.getKetahanan() - 3);
-            enemy.setKetahanan(defenseBaru);
-            System.out.println("Defense " + enemy.getNama() + " berkurang 3!");
-        }
-
-        resetCooldown();
+        
     }
-
-    @Override
+    /**
+     * Nama skill untuk class Archer
+     * @return nama skill nya
+     */
+    @Override 
     public String getNamaSkill() {
-        return "Piercing Arrow";
+        return null;
     }
-
+    /**
+     * hal yang bisa mengaktifkan skill pasif class Archer
+     */
     @Override
-    public String getDeskripsi() {
-        return "Archer " + getNama() + " (HP: " + getHp() + "/" + getMaxHp()
-                + ", ATK: " + getSerangan() + ", DEF: " + getKetahanan() + ")";
+    public void triggerPasif(){
+        
     }
-
-    @Override
-    public void triggerPasif() {
-        // Pasif sudah diimplementasikan di method serang()
-    }
-
-    @Override
+    /**
+     * nama pasifnya
+     */
+    @Override 
     public void getNamaPasif() {
-        System.out.println("Critical Shot - 25% chance untuk double damage");
+        
     }
 
     @Override
     public void resetPasif() {
-        this.pasifAktif = false;
-    }
-
-    @Override
-    public void showStatus() {
-        System.out.println("\n=== " + getNama() + " (Archer) ===");
-        System.out.println("HP   : " + getHp() + "/" + getMaxHp());
-        System.out.println("ATK  : " + getSerangan());
-        System.out.println("DEF  : " + getKetahanan());
-        System.out.println("Level: " + getLevel().getLevel());
-        System.out.println("Skill: " + getNamaSkill() + " (CD: " + getCooldownSekarang() + "/" + getCooldownSkill() + ")");
     }
 }

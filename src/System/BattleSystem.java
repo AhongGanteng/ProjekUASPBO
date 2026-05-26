@@ -1,23 +1,20 @@
 package System;
-
 import MakhlukHidup.*;
 import Items.*;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-
 /**
  *
  * @author LENOVO
  */
 public class BattleSystem {
-
     private Scanner input;
 
     public BattleSystem(Scanner input) {
         this.input = input;
     }
-
+    
     public boolean mulaiBattle(Hero player, Enemy musuh) {
         player.resetPasif();
         player.resetCooldown();
@@ -52,32 +49,32 @@ public class BattleSystem {
             return false;
         }
     }
-
+    
     public boolean giliranPlayer(Hero player, Enemy musuh) {
         System.out.println("========================");
         System.out.println("     GILIRAN PLAYER");
         System.out.println("========================");
-
+        
         player.showStatus();
         System.out.println("");
         musuh.showStatus();
         System.out.println("");
-
+        
         tampilActionMenu(player);
         int pilih = getPlayerChoise(1, 4);
         System.out.println("");
-
-        boolean aksiSelesai = false;
-        switch (pilih) {
+        
+       boolean aksiSelesai = false;
+        switch(pilih) {
             case 1:
                 player.serang(musuh);
                 aksiSelesai = true;
                 break;
-            case 2:
+            case 2: 
                 aturSkillHero(player, musuh);
                 aksiSelesai = true;
                 break;
-            case 3:
+            case 3: 
                 aturPotionHero(player);
                 aksiSelesai = true;
                 break;
@@ -85,7 +82,7 @@ public class BattleSystem {
         player.hitungCooldown();
         return aksiSelesai;
     }
-
+    
     public void tampilActionMenu(Hero player) {
         System.out.println("Pilih aksi: ");
         System.out.println("[1] Attack");
@@ -93,7 +90,7 @@ public class BattleSystem {
         System.out.println("[3] Potion");
         System.out.print("Pilih: ");
     }
-
+    
     public boolean aturSkillHero(Hero player, Enemy musuh) {
         if (!player.isSkillReady()) {
             System.out.println("Skill belum ready!(" + player.getCooldownSekarang() + "turn lagi)");
@@ -103,7 +100,7 @@ public class BattleSystem {
             return true;
         }
     }
-
+    
     public boolean aturPotionHero(Hero player) {
         List<HealthPotion> ramuan = new ArrayList<>();
         for (Item i : player.getPenyimpanan().getPotions()) {
@@ -117,9 +114,8 @@ public class BattleSystem {
         }
         System.out.println("Pilih potion:");
         for (int i = 0; i < ramuan.size(); i++) {
-            System.out.printf("  [%d] %s%n", i + 1, ramuan.get(i).getDeskripsi());
+            System.out.printf("  [%d] %s%n", ramuan.get(i).getDeskripsi());
         }
-
         System.out.println("  [0]. Batal");
         int pilih = getPlayerChoise(0, ramuan.size());
         if (pilih == 0) {
@@ -129,7 +125,7 @@ public class BattleSystem {
         player.getPenyimpanan().usePotion(ramuan.get(pilih - 1), player);
         return true;
     }
-
+    
     public void giliranMusuh(Hero player, Enemy musuh) {
         System.out.println("");
         System.out.println("========================");
@@ -137,7 +133,7 @@ public class BattleSystem {
         System.out.println("========================");
         musuh.serang(player);
     }
-
+    
     public void saatHeroMenang(Hero player, Enemy musuh) {
         System.out.println("");
         System.out.println("========================");
@@ -151,7 +147,7 @@ public class BattleSystem {
         }
         System.out.println("");
     }
-
+    
     public void saatMusuhMenang(Hero player) {
         System.out.println("");
         System.out.println("========================");
@@ -160,22 +156,22 @@ public class BattleSystem {
         System.out.println(player.getNama() + " telah gugur");
         player.showStatus();
     }
-
+    
     public void tampilIntroBattle(Hero player, Enemy musuh) {
         System.out.println("");
         System.out.println("=====================================");
-        System.out.printf("║  %-32s ║%n", player.getNama() + " VS " + musuh.getNama());
+        System.out.printf( "║  %-32s ║%n", player.getNama() + " VS " + musuh.getNama());
         System.out.println("=====================================");
-    }
-
+    } 
+    
     public int countPotions(Hero player) {
         int total = 0;
         for (Item i : player.getPenyimpanan().getPotions()) {
-            total += ((Potion) i).getQuantity();
+            total+=((Potion) i).getQuantity();
         }
         return total;
     }
-
+    
     public int getPlayerChoise(int min, int max) {
         int pilih = 0;
         do {
@@ -189,7 +185,7 @@ public class BattleSystem {
         } while (pilih > max || pilih < min);
         return pilih;
     }
-
+    
     public void aturItemDrop(Hero player, Item drop) {
         int pilih;
         System.out.println("");
@@ -199,16 +195,14 @@ public class BattleSystem {
             System.out.print("Pilih: ");
             pilih = getPlayerChoise(1, 2);
             System.out.println("");
-            switch (pilih) {
+            switch(pilih) {
                 case 1: {
-                    drop.pake(player);
-                    break;
-                }
+                    drop.pake(player); 
+                    break;}
                 case 2: {
-                    Potion p = (Potion) drop;
-                    player.getPenyimpanan().addItem(p);
+                    System.out.println("Item dibuang");
                     break;
-                }
+                    }
             }
         } else {
             System.out.println("[1] Equip Potion");
@@ -217,24 +211,21 @@ public class BattleSystem {
             System.out.print("Pilih: ");
             pilih = getPlayerChoise(1, 3);
             System.out.println("");
-            switch (pilih) {
+            switch(pilih) {
                 case 1: {
-                    drop.pake(player);
-                    break;
-                }
+                    drop.pake(player); 
+                    break;}
                 case 2: {
                     Potion p = (Potion) drop;
                     boolean tambahin = player.getPenyimpanan().addItem(p);
                     if (!tambahin) {
                         System.out.println("Inventory penuh!");
                     }
-                    break;
                 }
                 case 3: {
                     System.out.println("Item dibuang");
-                    break;
+                    break;}
                 }
-            }
         }
     }
 }

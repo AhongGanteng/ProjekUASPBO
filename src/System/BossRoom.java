@@ -1,14 +1,10 @@
 package System;
-
 import MakhlukHidup.*;
-
 /**
- * ini untuk class ruangan boss yang isinya boss dungeon
- *
+ *ini untuk class ruangan boss yang isinya boss dungeon
  * @author LENOVO
  */
-public class BossRoom extends Room {
-
+public class BossRoom extends Room{
     private Enemy boss;
 
     public BossRoom(Enemy boss) {
@@ -19,15 +15,16 @@ public class BossRoom extends Room {
     public Enemy getBoss() {
         return boss;
     }
-
+    
     @Override
-    public void enter(Hero player) {
-
+    public void enter(Hero player){
+        System.out.println("--  Memasuki Boss Room  --");
+        System.out.println("Musuh   : " + boss.getNama());
+        System.out.println("HP musuh: " + boss.getHp() + " / " + boss.getMaxHp());
+        System.out.println("==========================");
     }
-
-    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
-        return "Ruangan Boss yang menakutkan!";
+        return "Boss Room - Musuh: " + boss.getNama() + " (HP " + boss.getHp() + ")";
     }
 }
