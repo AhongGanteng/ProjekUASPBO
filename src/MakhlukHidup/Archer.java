@@ -60,4 +60,13 @@ public class Archer extends Hero{
     public void getNamaPasif() {
         
     }
+   @Override
+    public String getDeskripsi() {
+        return super.getDeskripsi() + 
+            String.format("\nPasif: %.0f%% peluang critical, damage x%d",critChange* 100, critticalDamage);
+            
+}
+    @Override
+    public void resetPasif() {
+    }
 }

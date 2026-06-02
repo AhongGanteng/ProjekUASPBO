@@ -20,10 +20,14 @@ public abstract class Armor extends Item {
     }
     @Override
     public String getItemType () {
-        return null;
+        return "Armor";
+        
     } 
     @Override
     public void pake (Hero target) {
+        
+        target.setKetahanan(target.getKetahanan()+ bonusKetahanan);
+        System.out.println(target.getNama()+ "memakai armor" + getNama());
         
     }
 }

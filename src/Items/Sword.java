@@ -18,23 +18,23 @@ public class Sword extends Weapon{
     }
     
     public static Sword Default() {
-        return new Sword("", "", "Warrior", 3);
+        return new Sword("Pedang Kayu", "Default", "Warrior", 3);
     }
     
     public static Sword biasa() {
-        return new Sword("", "", "Warrior", 5);
+        return new Sword("Pedang Ksatria", "biasa", "Warrior", 5);
     }
     
     public static Sword langka() {
-        return new Sword("", "", "Warrior", 8);
+        return new Sword("Pedang Petir", "langka", "Warrior", 8);
     }
     
     public static Sword epic() {
-        return new Sword("", "", "Warrior", 10);
+        return new Sword("Excalibur", "epic", "Warrior", 10);
     }
     
     @Override
     public String getJenisSenjata() {
-        return "Busur";
+        return "Sword";
     }
 }

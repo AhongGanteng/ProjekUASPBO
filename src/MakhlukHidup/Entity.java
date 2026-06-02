@@ -72,6 +72,4 @@ public abstract class Entity {
     }
     //tampilkan status
     public abstract void showStatus();
-    
-    public abstract void getDeskripsi();
 }

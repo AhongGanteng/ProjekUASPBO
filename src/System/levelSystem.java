@@ -64,7 +64,6 @@ public class levelSystem {
         return switch (Class) {
             case "Warrior" -> 4;
             case "Archer" -> 3;
-            case "Mage" -> 5;
             default -> 3;
         };
     }
@@ -78,7 +77,6 @@ public class levelSystem {
         return switch (Class) {
             case "Warrior" -> 4;
             case "Archer" -> 2;
-            case "Mage" -> 1;
             default -> 2;
         };
     }
@@ -91,7 +89,6 @@ public class levelSystem {
         return switch (Class) {
             case "Warrior" -> 20;
             case "Archer" -> 12;
-            case "Mage" -> 10;
             default -> 12;
         };
     }

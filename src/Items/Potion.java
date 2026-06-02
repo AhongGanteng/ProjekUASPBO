@@ -1,8 +1,9 @@
 package Items;
+import MakhlukHidup.*;
+
 /**
  * class parent untuk berbagai ramuan (ramuannya 3 aja wkwwkwkwkwwk)
  */
-import MakhlukHidup.*;
 public abstract class Potion extends Item{
     private int quantity; //jumlah potion
 
@@ -30,6 +31,7 @@ public abstract class Potion extends Item{
     public void pake(Hero target) {
         if (isEmpty()) {
             System.out.println(getNama() + " sudah habis");
+            return;
         }
         terimaEfek(target);
         quantity--;
@@ -38,7 +40,7 @@ public abstract class Potion extends Item{
     
     @Override
     public String getItemType() {
-        return null;
+        return "POTION";
     }
     @Override
     public void showStatus () {

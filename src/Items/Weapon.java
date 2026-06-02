@@ -27,6 +27,8 @@ public abstract class Weapon extends Item {
     } 
     @Override
     public void pake (Hero target) {
+        target.setSerangan(target.getSerangan() + bonusSerangan);
+        System.out.println(target.getNama() + "memakai senjata" + getNama());
         
     }
 }

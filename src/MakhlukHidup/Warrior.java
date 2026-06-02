@@ -64,4 +64,18 @@ public class Warrior extends Hero{
     public void getNamaPasif() {
         
     }
+    //tampilkan deskripsi player
+    @Override
+    public String getDeskripsi() {
+        return super.getDeskripsi()+ "\nPasif: Serangan meningkat saat HP di bawah 50%";
+    }
+
+    @Override
+    public void resetPasif() {
+        if (getHp() < getMaxHp() * 0.5) {
+            darahTersisaSetengah = false;
+        } else {
+            darahTersisaSetengah = true;
+        }
+    }
 }

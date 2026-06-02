@@ -1,7 +1,6 @@
 package MakhlukHidup;
 import Interface.*;
 import System.*;
-
 /**
  * class parent untuk class Warrior, Archer, dan Mage
  */
@@ -58,44 +57,25 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public boolean isAlive() {
         return getHp() > 0;
     }
-   /**
+    /**
     * nama, hp, level, exp, attack, deffence
     * status ditampilkan saat permainan berlangsung
     * mencetak tampilan tabel
     */
     @Override
     public void showStatus() {
-        System.out.println(""); //panggil nama dari GameManajer
-        System.out.println(""); //darah/hp dari Entity
-        System.out.println(""); //level dari Entity
-        System.out.println(""); //attack dari Entitiy
-        System.out.println(""); //deffence dari Entity
-    System.out.println("╔══════════════════════════╗");
-    System.out.println("║      STATUS BATTLE        ║");
-    System.out.println("╠══════════════════════════╣");
-    System.out.printf ("║ Nama  : %-17s║%n", getNama());
-    System.out.printf ("║ Class : %-17s║%n", heroClass);
-    System.out.printf ("║ HP    : %d/%-14d║%n", getHp(), getMaxHp());
-    System.out.printf ("║ ATK   : %-17d║%n", getSerangan());
-    System.out.printf ("║ DEF   : %-17d║%n", getKetahanan());
-    System.out.printf ("║ Skill : %-17s║%n", isSkillReady() ? "READY" : "Cooldown: " + cooldownSekarang);
-    System.out.println("╚══════════════════════════╝");
-}
+        System.out.println("╔══════════════════════════╗");
+        System.out.println("║      STATUS BATTLE        ║");
+        System.out.println("╠══════════════════════════╣");
+        System.out.printf ("║ Nama  : %-17s║%n", getNama());
+        System.out.printf ("║ Class : %-17s║%n", heroClass);
+        System.out.printf ("║ HP    : %d/%-14d║%n", getHp(), getMaxHp());
+        System.out.printf ("║ ATK   : %-17d║%n", getSerangan());
+        System.out.printf ("║ DEF   : %-17d║%n", getKetahanan());
+        System.out.printf ("║ Skill : %-17s║%n", isSkillReady() ? "READY" : "Cooldown: " + cooldownSekarang);
+        System.out.println("╚══════════════════════════╝");
     }
-    /**
-     * tampilkan deskripsi player setelah permainan
-     * tampilkan hasil 
-     * @return 
-     */
-    @Override
-    public String getDeskripsi() {
-        return null;
-       // String hero = "";
-   // return String.format(
-        //"Nama: %s | Class: %s | Level: %d | Skill: %s",
-       // hero.getNama(), heroClass, level.getLevel(), getNamaSkill());
-    }
-
+    
     //skill yang berbeda untuk setiap class hero
     public abstract void useSkill(Attackable target);
     //nama skill yang berbeda untuk setiap class hero
@@ -104,6 +84,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public abstract void triggerPasif();
     //nama pasif unik dari setiap class hero
     public abstract void getNamaPasif();
+    public abstract void resetPasif();
     
     /**
      * skill akan cooldown setelah dipakai
@@ -138,4 +119,26 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public void dapatExp(int xp, Hero target) {
         level.tambahExp(xp, target);
     }
+
+    public int getCooldownSkill() {
+        return cooldownSkill;
+    }
+
+    public int getCooldownSekarang() {
+        return cooldownSekarang;
+    }
+    @Override
+    public String getDeskripsi() {
+        return String.format("Nama: %s | Class: %s | Level: %d | Skill: %s",
+                getNama(), heroClass, level.getLevel(), getNamaSkill());
+    }
 }
+
+/**
+ * @Override
+public String getDeskripsi() {
+    return String.format(
+        "Nama: %s | Class: %s | Level: %d | Skill: %s",
+        getNama(), heroClass, level.getLevel(), getNamaSkill()
+    );
+ */
