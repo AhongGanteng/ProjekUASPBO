@@ -17,10 +17,11 @@ public class BattleSystem {
     
     public boolean mulaiBattle(Hero player, Enemy musuh) {
         player.resetPasif();
-        player.resetCooldown();
+        player.kosongkanCooldown();
         tampilIntroBattle(player, musuh);
         boolean heroFirst = Math.random() < 0.5;
         while (player.isAlive() && musuh.isAlive()) {
+            
             if (heroFirst) {
                 if (!giliranPlayer(player, musuh)) {
                     return false;
@@ -38,7 +39,6 @@ public class BattleSystem {
                     return false;
                 }
             }
-            heroFirst = !heroFirst;
             System.out.println("");
         }
         if (player.isAlive()) {
@@ -61,23 +61,23 @@ public class BattleSystem {
         System.out.println("");
         
         tampilActionMenu(player);
-        int pilih = getPlayerChoise(1, 4);
+        int pilih = getPlayerChoise(1, 3);
         System.out.println("");
         
-       boolean aksiSelesai = false;
+        boolean aksiSelesai = false;
         switch(pilih) {
-            case 1:
+            case 1 -> {
                 player.serang(musuh);
                 aksiSelesai = true;
-                break;
-            case 2: 
+            }
+            case 2 -> { 
                 aturSkillHero(player, musuh);
                 aksiSelesai = true;
-                break;
-            case 3: 
+            }
+            case 3 -> { 
                 aturPotionHero(player);
                 aksiSelesai = true;
-                break;
+            }
         }
         player.hitungCooldown();
         return aksiSelesai;
@@ -114,7 +114,7 @@ public class BattleSystem {
         }
         System.out.println("Pilih potion:");
         for (int i = 0; i < ramuan.size(); i++) {
-            System.out.printf("  [%d] %s%n", ramuan.get(i).getDeskripsi());
+            System.out.printf("  [%d] %s%n", (i + 1), ramuan.get(i).getDeskripsi());
         }
         System.out.println("  [0]. Batal");
         int pilih = getPlayerChoise(0, ramuan.size());
@@ -160,7 +160,7 @@ public class BattleSystem {
     public void tampilIntroBattle(Hero player, Enemy musuh) {
         System.out.println("");
         System.out.println("=====================================");
-        System.out.printf( "║  %-32s ║%n", player.getNama() + " VS " + musuh.getNama());
+        System.out.printf( "|  %-32s ║%n", player.getNama() + " VS " + musuh.getNama() + "    |");
         System.out.println("=====================================");
     } 
     
@@ -221,6 +221,7 @@ public class BattleSystem {
                     if (!tambahin) {
                         System.out.println("Inventory penuh!");
                     }
+                    break;
                 }
                 case 3: {
                     System.out.println("Item dibuang");

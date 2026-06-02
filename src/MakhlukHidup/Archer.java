@@ -27,7 +27,16 @@ public class Archer extends Hero{
      */
     @Override
     public void serang (Attackable target) {
-        
+        int baseDamage = getSerangan() + getPenyimpanan().getWeaponAtkBonus();
+        boolean isCrit = Math.random() < critChange;
+        if (isCrit) {
+            int crit = baseDamage * critticalDamage;
+            System.out.println(getNama() + " menembak! ✦ CRITICAL HIT! (" + crit + " damage)");
+            target.kenaDamage(crit);
+        } else {
+            System.out.println(getNama() + " menembak! (" + baseDamage + " damage)");
+            target.kenaDamage(baseDamage);
+        }
     }
     /**
      * Skill yang dimiliki oleh class Warrior
@@ -36,7 +45,14 @@ public class Archer extends Hero{
      */
     @Override
     public void useSkill(Attackable target) {
-        
+        if (!isSkillReady()) {
+            System.out.println("Piercing Arror belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
+        } else {
+            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
+            System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
+            target.kenaDamage(damage);
+        }
+        resetCooldown();
     }
     /**
      * Nama skill untuk class Archer
@@ -44,7 +60,7 @@ public class Archer extends Hero{
      */
     @Override 
     public String getNamaSkill() {
-        return null;
+        return "Piercing Arror (CD: " + getCooldownSekarang() + " turn lagi)";
     }
     //tampilkan deskripsi player
     @Override
@@ -62,8 +78,8 @@ public class Archer extends Hero{
      * nama pasifnya
      */
     @Override 
-    public void getNamaPasif() {
-        
+    public String getNamaPasif() {
+        return "Critical Shot (+25% damage)";
     }
     
     @Override 

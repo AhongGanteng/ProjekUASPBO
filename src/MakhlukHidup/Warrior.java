@@ -31,7 +31,9 @@ public class Warrior extends Hero{
      */
     @Override
     public void serang (Attackable target) {
-        
+        int damage = getSerangan() + getPenyimpanan().getWeaponAtkBonus();
+        System.out.println(getNama() + " mengayunkan pedang! (" + damage + " damage)");
+        target.kenaDamage(damage);
     }
     /**
      * Skill yang dimiliki oleh class Warrior
@@ -40,7 +42,14 @@ public class Warrior extends Hero{
      */
     @Override
     public void useSkill(Attackable target) {
-        
+        if (!isSkillReady()) {
+            System.out.println("Leap Attack belum siap! (" + getCooldownSekarang() + " turn lagi)");
+        } else {
+            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.5);
+            System.out.println(getNama() + " menggunakan skill Leap Attack! (" + damage + ") damage");
+            target.kenaDamage(damage);
+        }
+        resetCooldown();
     }
     /**
      * Nama skill untuk class Warrior
@@ -48,21 +57,29 @@ public class Warrior extends Hero{
      */
     @Override 
     public String getNamaSkill() {
-        return null;
+        return "Leap Attack (CD: " + getCooldownSekarang() + " turn lagi)";
     }
     /**
      * hal yang bisa mengaktifkan skill pasif class Warrior
      */
     @Override
     public void triggerPasif(){
-        
+        if (!darahTersisaSetengah && getHp() < getMaxHp() / 2) {
+            setKetahanan(getKetahanan() + 5);
+            darahTersisaSetengah = true;
+            System.out.println("[Passive: Toughness] HP di bawah 50%! DEF +5 (DEF sekarang: " + getKetahanan() + ")");
+        }
     }
     /**
      * nama pasifnya
      */
     @Override 
-    public void getNamaPasif() {
-        
+    public String getNamaPasif() {
+        if (darahTersisaSetengah) {
+            return "Toughness sudah aktif!";
+        } else {
+            return "Toughness belum aktif";
+        }
     }
 
     @Override
@@ -73,4 +90,5 @@ public class Warrior extends Hero{
             darahTersisaSetengah = true;
         }
     }
+    
 }

@@ -85,12 +85,6 @@ public class Floor{
         perhitunganBattle = 0;
     }
     /**
-     * tunjukin udah battle ke berapa misal battle (2/3)
-     */
-    public void showRoundBattle() {
-        
-    }
-    /**
      * Tampilkan intro pada saat awal masuk lantai
      */
     public void tampilkanIntroFloor() {
