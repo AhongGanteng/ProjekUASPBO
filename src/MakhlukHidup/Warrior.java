@@ -73,6 +73,7 @@ public class Warrior extends Hero{
     }
     /**
      * nama pasifnya
+     * @return 
      */
     @Override 
     public String getNamaPasif() {
@@ -85,11 +86,11 @@ public class Warrior extends Hero{
 
     @Override
     public void resetPasif() {
-        if (getHp() < getMaxHp() * 0.5) {
-            darahTersisaSetengah = false;
-        } else {
-            darahTersisaSetengah = true;
-        }
+        darahTersisaSetengah = getHp() >= getMaxHp() * 0.5;
     }
     
+    @Override
+    public String getDeskripsi() {
+        return super.getDeskripsi()+ "\nPasif: Serangan meningkat saat HP di bawah 50%";
+    }
 }

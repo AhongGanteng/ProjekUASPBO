@@ -51,8 +51,8 @@ public class Archer extends Hero{
             int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
             System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
             target.kenaDamage(damage);
+            resetCooldown();
         }
-        resetCooldown();
     }
     /**
      * Nama skill untuk class Archer
@@ -65,7 +65,8 @@ public class Archer extends Hero{
     //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
-        return null;
+        return super.getDeskripsi() + 
+            String.format("\nPasif: %.0f%% peluang critical, damage x%d",critChange* 100, critticalDamage);
     }
     /**
      * hal yang bisa mengaktifkan skill pasif class Archer

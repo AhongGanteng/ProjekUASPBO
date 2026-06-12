@@ -18,7 +18,7 @@ public class Inventory {
         this.maxSlots = maxSlots;
         this.equippedWeapon = null;
         this.equippedArmor = null;
-        Potion equippedPotion = null;
+        this.equippedPotion = null;
     }
 
     public List<Potion> getPotions() {
@@ -45,7 +45,7 @@ public class Inventory {
     }
     /**
      * menambahkankan item ke inventory
-     * @param items
+     * @param ramuan
      * @return true atau false
      */ 
     public boolean addItem (Potion ramuan) {
@@ -71,8 +71,7 @@ public class Inventory {
      * @return true atau false
      */
     public boolean removeItem(Item items) {
-        boolean removed = this.potions.remove(items);
-        return removed;
+        return this.potions.remove(items);
     }
     
     /**
