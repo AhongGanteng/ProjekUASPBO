@@ -3,6 +3,7 @@ package Items;
  * Parent class untuk weapon, armor dan potion
  */
 import Interface.*;
+import MakhlukHidup.*;
 /**
  * mengimplements dari class Deskripsi dan BisaDipake
  * @author LENOVO

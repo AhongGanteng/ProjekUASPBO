@@ -23,6 +23,7 @@ public class BossRoom extends Room{
         System.out.println("HP musuh: " + boss.getHp() + " / " + boss.getMaxHp());
         System.out.println("==========================");
     }
+    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
         return "Boss Room - Musuh: " + boss.getNama() + " (HP " + boss.getHp() + ")";

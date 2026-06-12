@@ -1,24 +1,26 @@
 package System;
+
 import java.util.ArrayList;
 import java.util.List;
 import Items.*;
 import MakhlukHidup.*;
+
 /**
  * Penyimpanan untuk player
  */
 public class Inventory {
+
     private List<Potion> potions;
     private int maxSlots;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
     private Potion equippedPotion;
-    
+
     public Inventory(int maxSlots) {
         this.potions = new ArrayList<>();
         this.maxSlots = maxSlots;
         this.equippedWeapon = null;
         this.equippedArmor = null;
-        Potion equippedPotion = null;
     }
 
     public List<Potion> getPotions() {
@@ -29,32 +31,26 @@ public class Inventory {
         return maxSlots;
     }
 
-    public Weapon EquipWeapon() {
-        return equippedWeapon;
-    }
-
-    public Armor EquipArmor() {
-        return equippedArmor;
-    }
     /**
      * cek apakah inventori full
-     * @return true jika ukuran item sama dengan maksimum slot inventori 
+     * @return true jika ukuran item sama dengan maksimum slot inventori
      */
     public boolean isFull() {
         return this.potions.size() == maxSlots;
     }
+
     /**
      * menambahkankan item ke inventory
-     * @param items
+     * @param ramuan
      * @return true atau false
-     */ 
-    public boolean addItem (Potion ramuan) {
+     */
+    public boolean addItem(Potion ramuan) {
         if (isFull()) {
             System.out.println("Inventory sudah penuh!");
             return false;
         }
         for (Potion ada : potions) {
-            if (ada.getNama().equals(ada)) {
+            if (ada.getNama().equals(ramuan.getNama())) {
                 ada.setQuantity(ada.getQuantity() + ramuan.getQuantity());
                 System.out.println(ramuan.getNama() + " ditambahkan kedalam inventory");
                 return true;
@@ -64,17 +60,19 @@ public class Inventory {
         System.out.println(ramuan.getNama() + "ditambahkan ke inventory ");
         return true;
     }
-    
+
     /**
      * Menghapus item dari inventory
-     * @param items
+     * @param item
      * @return true atau false
      */
-    public boolean removeItem(Item items) {
-        boolean removed = this.potions.remove(items);
-        return removed;
+    public boolean removeItem(Item item) {
+        if (item instanceof Potion) {
+            return this.potions.remove(item);
+        }
+        return false;
     }
-    
+
     /**
      * Tampilin isi inventory
      */
@@ -95,12 +93,12 @@ public class Inventory {
             System.out.println("Senjata: - ");
         }
         if (equippedArmor != null) {
-            System.out.println("Armor: " + equippedArmor.getNama() + " (ATK +" + equippedArmor.getBonusKetahanan());
+            System.out.println("Armor: " + equippedArmor.getNama() + " (DEF +" + equippedArmor.getBonusKetahanan());
         } else {
             System.out.println("Armor: - ");
         }
     }
-    
+
     /**
      * senjata yang dipake player
      * @param senjata, obyek senjata yang player dapatkan
@@ -112,7 +110,7 @@ public class Inventory {
         equippedWeapon = senjata;
         System.out.println("Equip senjata: " + senjata.getNama() + " ATK +" + senjata.getBonusSerangan());
     }
-    
+
     /**
      * armor yang dipake player
      * @param armor, obyek armor yang player dapatkan
@@ -124,7 +122,7 @@ public class Inventory {
         equippedArmor = armor;
         System.out.println("Equip senjata: " + armor.getNama() + " DEF +" + armor.getBonusKetahanan());
     }
-    
+
     /**
      * potion dipakai player
      * @param ramuan, ramuan yang akan dipakai
@@ -140,25 +138,25 @@ public class Inventory {
             System.out.println("Potion habis");
         }
     }
-    
+
     /**
      * ambil bonus serangan dari senjata yang dipakai
      * @return bonus serangan
      */
     public int getWeaponAtkBonus() {
-        if (EquipWeapon() != null) {
+        if (getEquippedWeapon() != null) {
             return equippedWeapon.getBonusSerangan();
         } else {
             return 0;
         }
     }
-    
+
     /**
      * ambil bonus pertahanan dari armor yang dipakai
      * @return bonus pertahanan
      */
     public int getArmorDefBonus() {
-        if (EquipArmor() != null) {
+        if (getEquippedArmor() != null) {
             return equippedArmor.getBonusKetahanan();
         } else {
             return 0;

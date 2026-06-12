@@ -45,15 +45,23 @@ public class levelSystem {
      */
     public void levelUp (Hero target) {
         level++;
-        expPerLevel = (int) (expAwal * Math.pow(pertumbuhanExp, level - 1));
+        expPerLevel = (int) (expAwal * Math.pow(1.4, level - 1));
         int peningkatanAtk = getPeningkatanAtkTambahanSetiapClass(target.getHeroClass());
         int peningkatanHp = getPeningkatanHpTambahanSetiapClass(target.getHeroClass());
         int peningkatanDef = getPeningkatanDefTambahanSetiapClass(target.getHeroClass());
         
         target.setSerangan(target.getSerangan() + peningkatanAtk);
         target.setHp(target.getHp() + peningkatanHp);
-        target.setKetahanan(target.getKetahanan() + peningkatanHp);
+        target.setKetahanan(target.getKetahanan() + peningkatanDef);
         target.heal(peningkatanHp);
+        
+        System.out.println("╔══════════════════════════╗");
+        System.out.println("║     ★ LEVEL UP! ★        ║");
+        System.out.printf( "║  Level  : %-15d ║%n", level);
+        System.out.printf( "║  ATK +  : %-15d ║%n", peningkatanAtk);
+        System.out.printf( "║  DEF +  : %-15d ║%n", peningkatanDef);
+        System.out.printf( "║  MaxHP +: %-15d ║%n", peningkatanHp);
+        System.out.println("╚══════════════════════════╝");
     }
     /**
      * damage serangan akan meningkat setiap naik level

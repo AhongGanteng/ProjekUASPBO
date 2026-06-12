@@ -16,10 +16,6 @@ public class BattleRoom extends Room{
         return enemy;
     }
     
-    public boolean run(Hero player, BattleSystem sistemBattle) {
-        return sistemBattle.mulaiBattle(player, enemy);
-    }
-
     @Override
     public void enter(Hero player){
         System.out.println("-- Memasuki Battle Room --");
@@ -27,6 +23,7 @@ public class BattleRoom extends Room{
         System.out.println("HP musuh: " + enemy.getHp() + " / " + enemy.getMaxHp());
         System.out.println("==========================");
     }
+    //tampilkan deskripsi player
     
     @Override
     public String getDeskripsi() {

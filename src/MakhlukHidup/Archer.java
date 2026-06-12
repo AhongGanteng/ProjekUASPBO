@@ -16,7 +16,6 @@ public class Archer extends Hero {
     /**
      * nama player darah warrior = 100 damage serangan = 20 ketahanan = 6 jeda
      * penggunaan skill = 3
-     *
      * @param nama
      */
     public Archer(String nama) {
@@ -25,32 +24,51 @@ public class Archer extends Hero {
 
     /**
      * damage serangan yang diberikan oleh player
-     *
      * @param target, targetnya adalah obyek Enemy
      */
     @Override
     public void serang(Attackable target) {
-
+        int baseDamage = getSerangan() + getPenyimpanan().getWeaponAtkBonus();
+        boolean isCrit = Math.random() < critChange;
+        if (isCrit) {
+            int crit = baseDamage * critticalDamage;
+            System.out.println(getNama() + " menembak! ✦ CRITICAL HIT! (" + crit + " damage)");
+            target.kenaDamage(crit);
+        } else {
+            System.out.println(getNama() + " menembak! (" + baseDamage + " damage)");
+            target.kenaDamage(baseDamage);
+        }
     }
 
     /**
      * Skill yang dimiliki oleh class Warrior peningkatan damage +80% dan
      * ketahanan musuh -3
-     *
      * @param target, target serangan
      */
     @Override
     public void useSkill(Attackable target) {
-
+        if (!isSkillReady()) {
+            System.out.println("Piercing Arror belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
+        } else {
+            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
+            System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
+            target.kenaDamage(damage);
+            resetCooldown();
+        }
     }
 
     /**
      * Nama skill untuk class Archer
-     *
      * @return nama skill nya
      */
     @Override
     public String getNamaSkill() {
+        return "Piercing Arror (CD: " + getCooldownSekarang() + " turn lagi)";
+    }
+
+    //tampilkan deskripsi player
+    @Override
+    public String getDeskripsi() {
         return null;
     }
 
@@ -66,23 +84,12 @@ public class Archer extends Hero {
      * nama pasifnya
      */
     @Override
-    public void getNamaPasif() {
-
-    }
-
-    @Override
-    public String getDeskripsi() {
-        return String.format("[Archer] %s | LV %d | HP: %d/%d | ATK: %d | DEF: %d | Crit: %.0f%%",
-                getNama(),
-                getLevel().getLevel(),
-                getHp(),
-                getMaxHp(),
-                getSerangan() + getPenyimpanan().getWeaponAtkBonus(),
-                getKetahanan() + getPenyimpanan().getArmorDefBonus(),
-                critChange * 100);
+    public String getNamaPasif() {
+        return "Critical Shot (+25% damage)";
     }
 
     @Override
     public void resetPasif() {
+
     }
 }
