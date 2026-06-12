@@ -17,11 +17,9 @@ public class BattleSystem {
     
     public boolean mulaiBattle(Hero player, Enemy musuh) {
         player.resetPasif();
-        player.kosongkanCooldown();
         tampilIntroBattle(player, musuh);
         boolean heroFirst = Math.random() < 0.5;
         while (player.isAlive() && musuh.isAlive()) {
-            
             if (heroFirst) {
                 if (!giliranPlayer(player, musuh)) {
                     return false;
@@ -60,27 +58,19 @@ public class BattleSystem {
         musuh.showStatus();
         System.out.println("");
         
-        tampilActionMenu(player);
-        int pilih = getPlayerChoise(1, 3);
-        System.out.println("");
-        
         boolean aksiSelesai = false;
-        switch(pilih) {
-            case 1 -> {
-                player.serang(musuh);
-                aksiSelesai = true;
-            }
-            case 2 -> { 
-                aturSkillHero(player, musuh);
-                aksiSelesai = true;
-            }
-            case 3 -> { 
-                aturPotionHero(player);
-                aksiSelesai = true;
+        while (!aksiSelesai) {
+            tampilActionMenu(player);
+            int pilih = getPlayerChoise(1, 3);
+            System.out.println("");
+            switch(pilih) {
+                case 1 -> { player.serang(musuh); aksiSelesai = true; }
+                case 2 -> aksiSelesai = aturSkillHero(player, musuh);
+                case 3 -> aksiSelesai = aturPotionHero(player);
             }
         }
         player.hitungCooldown();
-        return aksiSelesai;
+        return true;
     }
     
     public void tampilActionMenu(Hero player) {
@@ -196,12 +186,11 @@ public class BattleSystem {
             pilih = getPlayerChoise(1, 2);
             System.out.println("");
             switch(pilih) {
-                case 1: {
+                case 1 ->  {
                     drop.pake(player); 
-                    break;}
-                case 2: {
+}
+                case 2 ->  {
                     System.out.println("Item dibuang");
-                    break;
                     }
             }
         } else {
@@ -212,20 +201,19 @@ public class BattleSystem {
             pilih = getPlayerChoise(1, 3);
             System.out.println("");
             switch(pilih) {
-                case 1: {
+                case 1 ->  {
                     drop.pake(player); 
-                    break;}
-                case 2: {
+}
+                case 2 ->  {
                     Potion p = (Potion) drop;
                     boolean tambahin = player.getPenyimpanan().addItem(p);
                     if (!tambahin) {
                         System.out.println("Inventory penuh!");
                     }
-                    break;
                 }
-                case 3: {
+                case 3 ->  {
                     System.out.println("Item dibuang");
-                    break;}
+}
                 }
         }
     }

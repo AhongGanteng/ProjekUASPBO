@@ -48,8 +48,9 @@ public class Warrior extends Hero{
             int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.5);
             System.out.println(getNama() + " menggunakan skill Leap Attack! (" + damage + ") damage");
             target.kenaDamage(damage);
+            resetCooldown();
         }
-        resetCooldown();
+        
     }
     /**
      * Nama skill untuk class Warrior

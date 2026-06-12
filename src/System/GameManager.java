@@ -24,7 +24,7 @@ public class GameManager {
                 input.next();
             }
             pilih = input.nextInt();
-            input.nextLine(); // buang sisa newline
+            input.nextLine(); 
         } while (pilih < min || pilih > max);
         return pilih;
     }

@@ -4,7 +4,7 @@ import Items.*;
 /**
  * class parent untuk setiap obyek enemy yang ada
  */
-public abstract class Enemy extends Entity implements Attackable, Deskripsi{
+public class Enemy extends Entity implements Attackable, Deskripsi{
     private int hadiahExp; //jumlah hadiah exp saat dikalahkan
     private Item[] dropItem; //item yang di drop (jatuhkan)
     private double dropChange; //kesempatan drop item
@@ -56,7 +56,9 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
     @Override
     public void serang(Attackable target) {
         int damage = Math.max(1, getSerangan());
+        System.out.println(getNama() + " menyerang");
         target.kenaDamage(damage);
+        
     }
     /**
      * damage serangan yang diterima oleh obyek enemy
@@ -92,14 +94,23 @@ public abstract class Enemy extends Entity implements Attackable, Deskripsi{
     /**
      * @return tipe musuh ("GOBLIN", dll)
      */
-    public abstract String tipeMusuh();
+    public String tipeMusuh() {
+        return "Monster";
+    }
+    
+    //tampilkan deskripsi player
+    @Override
+    public String getDeskripsi() {
+        return getNama() + "adalah monster dari lantai"+ getLantai();
+    }
 
     @Override
     public void showStatus() {
-        System.out.println("===== ENEMY =====");
-        System.out.println("Nama      : " + getNama());
-        System.out.println("HP        : " + getHp() + "/" + getMaxHp());
-        System.out.println("Serangan  : " + getSerangan());
-        System.out.println("Ketahanan : " + getKetahanan());
+        System.out.println("\nStatus Monster");
+        System.out.println("Nama  :" + getNama());
+        System.out.println("Hp   :" + getHp() + "/" + getMaxHp());
+        System.out.println("Serangan :" + getSerangan());
+        System.out.println("Ketahanan :" + getKetahanan());
+        System.out.println("Exp :" + getHadiahExp());
     }
 }

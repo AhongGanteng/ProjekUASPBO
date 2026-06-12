@@ -1,5 +1,4 @@
  package Lantai;
-import System.EnemyFactory;
 import System.*;
 import MakhlukHidup.*;
 import java.util.Scanner;
@@ -13,16 +12,17 @@ public class Floor{
     private int perhitunganBattle;
     private static final int jumlahRuangan = 5; //ada 5 lantai
     private static final int banyakMusuh = 3;
+    private Enemy musuh;
     /**
      * pokoknya kontruktor
      * @param nomorLantai 
      */
     public Floor(int nomorLantai) {
         this.nomorLantai = nomorLantai;
-        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
+        musuh = MonsterFactory.bangunMusuh(nomorLantai);
         this.perhitunganBattle = 0;
         if (isFinalFloor()) {
-            this.RuanganBoss = new BossRoom(EnemyFactory.bangunBossDragon());
+            this.RuanganBoss = new BossRoom(MonsterFactory.bangunBossDragon());
         } else {
             this.RuanganBoss = null;
         }
@@ -41,7 +41,7 @@ public class Floor{
     }
     
     public BattleRoom buatBattleSelanjutnya() {
-        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
+        MonsterFactory.bangunMusuh(nomorLantai);
         return simpanRuanganBattle = new BattleRoom(musuh);
     }
     /**
@@ -63,8 +63,8 @@ public class Floor{
      * @return 
      */
     public BattleRoom bentukBattleRoom() {
-        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
-        return new BattleRoom(musuh);
+        Enemy musuhBerikutnya = MonsterFactory.bangunMusuh(nomorLantai);
+        return new BattleRoom(musuhBerikutnya);
     }
     /**
      * hitung berapa kali menang dalam melawan musuh dilantai yang sama
@@ -74,6 +74,7 @@ public class Floor{
     }
     /**
      * cek apakah sudah selesai battlenya
+     * @return 
      */
     public boolean sudahSelesai() {
         return perhitunganBattle == banyakMusuh;
@@ -91,7 +92,7 @@ public class Floor{
         System.out.println("=======================");
         System.out.println("  Lantai " + nomorLantai + "/" + jumlahRuangan );
         System.out.println("=======================");
-        Enemy musuh = EnemyFactory.bangunMusuh(nomorLantai);
+        MonsterFactory.bangunMusuh(nomorLantai);
         System.out.println("Musuh : " + musuh.getNama());
         System.out.println("Battle: " + banyakMusuh + " musuh per ronde");
         if (isFinalFloor()) {
@@ -101,6 +102,7 @@ public class Floor{
     }
     /**
      * saat lantai sudah diselesaikan, cooldown skill dan darah akan direset
+     * @param player
      */
     public void saatLantaiClear(Hero player) {
         System.out.println("=======================");
@@ -134,22 +136,19 @@ public class Floor{
             System.out.println("|--------------------------------------|");
             System.out.print("Pilih: ");
             int pilih = getChoicePlayer(input, 1, 2);
-            
-            switch(pilih){
-                case 1: {
-                    if (isFinalFloor()) {
-                        boolean bossKalah = runBossRoom(player, sistemBattle);
-                        if (!bossKalah) {
-                            return false;
-                        }
-                        saatLantaiClear(player);
-                        return true;
+
+            if (pilih == 1) {
+                if (isFinalFloor()) {
+                    boolean bossKalah = runBossRoom(player, sistemBattle);
+                    if (!bossKalah) {
+                        return false;
                     }
                 }
-                default: {
-                    System.out.println("Kamu memilih untuk tetap di lantai " + nomorLantai);
+                saatLantaiClear(player);
+                return true;
+            } else {
+                System.out.println("Kamu memilih untuk tetap di lantai " + nomorLantai);
                     System.out.println("");
-                }
             }
         }
     }

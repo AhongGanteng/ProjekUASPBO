@@ -5,7 +5,7 @@ import Items.*;
 /**
  * semacam sistem untuk spawn monster
  */
-public class EnemyFactory {
+public class MonsterFactory {
     private static Enemy musuh;
     /**
      * ini sistemnya, jadi monster akan muncul dilantai berbeda
@@ -28,22 +28,22 @@ public class EnemyFactory {
      */
     public static Enemy bangunSlime() {
         Item[] dropItem = {HealthPotion.Biasa(), HealthPotion.Langka(), HealthPotion.Epic()};
-        return musuh = new Monster(10, dropItem, 0.5, 1, "Slime", 30, 5, 1);
+        return musuh = new Enemy(10, dropItem, 0.5, 1, "Slime", 30, 5, 1);
     }
     public static Enemy bangunGoblin() {
         Item[] dropItem = {Sword.biasa(), Busur.biasa(), Sword.langka(), Busur.langka()};
-        return musuh = new Monster(10, dropItem, 0.5, 2, "Goblin", 30, 5, 1);
+        return musuh = new Enemy(10, dropItem, 0.5, 2, "Goblin", 30, 5, 1);
     }
     public static Enemy bangunSkeleton() {
         Item[] dropItem = {Jubah.biasa(), Jubah.langka(), Jubah.epic()};
-        return musuh = new Monster(10, dropItem, 0.5, 3, "Skeleton", 30, 5, 1);
+        return musuh = new Enemy(10, dropItem, 0.5, 3, "Skeleton", 30, 5, 1);
     }
     public static Enemy bangunDarkKnight() {
         Item[] dropItem = {Sword.epic(), Busur.epic(), HealthPotion.Epic()};
-        return musuh = new Monster(10, dropItem, 0.5, 4, "DarkKnight", 30, 5, 1);
+        return musuh = new Enemy(10, dropItem, 0.5, 4, "DarkKnight", 30, 5, 1);
     }
     public static Enemy bangunBossDragon() {
         Item[] dropItem = {};
-        return musuh = new Monster(10, dropItem, 1.0, 5, "Dragon", 30, 5, 1);
+        return musuh = new Enemy(10, dropItem, 1.0, 5, "Dragon", 30, 5, 1);
     }
 }
