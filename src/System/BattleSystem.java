@@ -70,7 +70,7 @@ public class BattleSystem {
             }
         }
         player.hitungCooldown();
-        return true;
+        return aksiSelesai;
     }
     
     public void tampilActionMenu(Hero player) {
