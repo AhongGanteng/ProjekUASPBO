@@ -6,13 +6,13 @@ import Items.*;
  * semacam sistem untuk spawn monster
  */
 public class MonsterFactory {
-    private static Enemy musuh;
+    private Enemy musuh;
     /**
      * ini sistemnya, jadi monster akan muncul dilantai berbeda
      * @param nomorLantai
      * @return bangun monsternya
      */
-    public static Enemy bangunMusuh(int nomorLantai) {
+    public Enemy bangunMusuh(int nomorLantai) {
         return switch (nomorLantai) {
             case 1 -> bangunSlime();
             case 2 -> bangunGoblin();
@@ -26,23 +26,23 @@ public class MonsterFactory {
      * ini untuk munculin monsternya
      * @return 
      */
-    public static Enemy bangunSlime() {
+    public Enemy bangunSlime() {
         Item[] dropItem = {HealthPotion.Biasa(), HealthPotion.Langka(), HealthPotion.Epic()};
         return musuh = new Enemy(10, dropItem, 0.5, 1, "Slime", 30, 5, 1);
     }
-    public static Enemy bangunGoblin() {
+    public Enemy bangunGoblin() {
         Item[] dropItem = {Sword.biasa(), Busur.biasa(), Sword.langka(), Busur.langka()};
         return musuh = new Enemy(10, dropItem, 0.5, 2, "Goblin", 30, 5, 1);
     }
-    public static Enemy bangunSkeleton() {
+    public Enemy bangunSkeleton() {
         Item[] dropItem = {Jubah.biasa(), Jubah.langka(), Jubah.epic()};
         return musuh = new Enemy(10, dropItem, 0.5, 3, "Skeleton", 30, 5, 1);
     }
-    public static Enemy bangunDarkKnight() {
+    public Enemy bangunDarkKnight() {
         Item[] dropItem = {Sword.epic(), Busur.epic(), HealthPotion.Epic()};
         return musuh = new Enemy(10, dropItem, 0.5, 4, "DarkKnight", 30, 5, 1);
     }
-    public static Enemy bangunBossDragon() {
+    public Enemy bangunBossDragon() {
         Item[] dropItem = {};
         return musuh = new Enemy(10, dropItem, 1.0, 5, "Dragon", 30, 5, 1);
     }
