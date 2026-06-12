@@ -13,18 +13,16 @@ public class Floor{
     private static final int jumlahRuangan = 5; //ada 5 lantai
     private static final int banyakMusuh = 3;
     private Enemy musuh;
-    private MonsterFactory monster;
     /**
      * pokoknya kontruktor
      * @param nomorLantai 
      */
     public Floor(int nomorLantai) {
         this.nomorLantai = nomorLantai;
-        this.monster = new MonsterFactory();
-        musuh = monster.bangunMusuh(nomorLantai);
+        musuh = MonsterFactory.bangunMusuh(nomorLantai);
         this.perhitunganBattle = 0;
         if (isFinalFloor()) {
-            this.RuanganBoss = new BossRoom(monster.bangunBossDragon());
+            this.RuanganBoss = new BossRoom(MonsterFactory.bangunBossDragon());
         } else {
             this.RuanganBoss = null;
         }
@@ -43,7 +41,7 @@ public class Floor{
     }
     
     public BattleRoom buatBattleSelanjutnya() {
-        musuh = monster.bangunMusuh(nomorLantai);
+        musuh = MonsterFactory.bangunMusuh(nomorLantai);
         return simpanRuanganBattle = new BattleRoom(musuh);
     }
     /**
@@ -65,7 +63,7 @@ public class Floor{
      * @return 
      */
     public BattleRoom bentukBattleRoom() {
-        Enemy musuhBerikutnya = monster.bangunMusuh(nomorLantai);
+        Enemy musuhBerikutnya = MonsterFactory.bangunMusuh(nomorLantai);
         return new BattleRoom(musuhBerikutnya);
     }
     /**
@@ -94,7 +92,7 @@ public class Floor{
         System.out.println("=======================");
         System.out.println("  Lantai " + nomorLantai + "/" + jumlahRuangan );
         System.out.println("=======================");
-        monster.bangunMusuh(nomorLantai);
+        MonsterFactory.bangunMusuh(nomorLantai);
         System.out.println("Musuh : " + musuh.getNama());
         System.out.println("Battle: " + banyakMusuh + " musuh per ronde");
         if (isFinalFloor()) {
