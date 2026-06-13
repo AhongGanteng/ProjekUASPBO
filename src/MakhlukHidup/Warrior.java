@@ -68,7 +68,6 @@ public class Warrior extends Hero{
      */
     @Override
     public void triggerPasif() {
-        System.out.println("DEBUG triggerPasif dipanggil, flag=" + darahTersisaSetengah + " HP=" + getHp() + " maxHP/2=" + getMaxHp()/2);
         if (!darahTersisaSetengah && getHp() < getMaxHp() / 2) {
             setKetahanan(getKetahanan() + 5);
             darahTersisaSetengah = true;

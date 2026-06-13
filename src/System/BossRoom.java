@@ -19,8 +19,7 @@ public class BossRoom extends Room{
     @Override
     public void enter(Hero player){
         System.out.println("--  Memasuki Boss Room  --");
-        System.out.println("Musuh   : " + boss.getNama());
-        System.out.println("HP musuh: " + boss.getHp() + " / " + boss.getMaxHp());
+        System.out.println(getDeskripsi());
         System.out.println("==========================");
     }
     //tampilkan deskripsi player

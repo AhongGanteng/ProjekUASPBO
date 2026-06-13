@@ -93,7 +93,7 @@ public class Floor{
         System.out.println("  Lantai " + nomorLantai + "/" + jumlahRuangan );
         System.out.println("=======================");
         MonsterFactory.bangunMusuh(nomorLantai);
-        System.out.println("Musuh : " + musuh.getNama());
+        System.out.println(musuh.getDeskripsi());
         System.out.println("Battle: " + banyakMusuh + " musuh per ronde");
         if (isFinalFloor()) {
             System.out.println("Kamu akan menghadapi Boss");

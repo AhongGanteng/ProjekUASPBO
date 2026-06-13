@@ -101,7 +101,7 @@ public class Enemy extends Entity implements Attackable, Deskripsi{
     //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
-        return getNama() + "adalah monster dari lantai"+ getLantai();
+        return getNama() + " adalah monster dari lantai "+ getLantai();
     }
 
     @Override

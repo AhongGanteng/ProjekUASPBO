@@ -32,7 +32,7 @@ public class GameManager {
     public void showTitle() {
         System.out.println("|--------------------------------------|");
         System.out.println("|                                      |");
-        System.out.println("|           DUNGEON CLAWLER            |");
+        System.out.println("|           DUNGEON CRAWLER            |");
         System.out.println("|         TURN-BASED ADVENTURE         |");
         System.out.println("|                                      |");
         System.out.println("|--------------------------------------|");
