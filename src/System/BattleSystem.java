@@ -21,7 +21,7 @@ public class BattleSystem {
     public boolean mulaiBattle(Hero player, Enemy musuh) {
         player.resetPasif();
         tampilIntroBattle(player, musuh);
-        boolean heroFirst = Math.random() < 0.5;
+        boolean heroFirst = true;
         while (player.isAlive() && musuh.isAlive()) {
             if (heroFirst) {
                 if (!giliranPlayer(player, musuh)) {

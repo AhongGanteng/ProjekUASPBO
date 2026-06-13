@@ -35,26 +35,25 @@ public class MonsterFactory {
                 0.5,
                 1,
                 "Slime",
-                30,     // HP
-                5,      // ATK
-                1       // DEF
+                60,     // HP
+                20,      // ATK
+                5       // DEF
         );
     }
        public static Enemy bangunGoblin() {
-        Item[] dropItem = { Sword.biasa(),Busur.biasa(), Sword.langka(),Busur.langka()};
-        return musuh = new Enemy(20,dropItem,0.5, 2,"Goblin", 50, 8,3 );
+        Item[] dropItem = {Sword.biasa(),Busur.biasa(), Sword.langka(),Busur.langka()};
+        return musuh = new Enemy(20, dropItem, 0.5, 2, "Goblin", 100, 38, 10);
     }
        public static Enemy bangunSkeleton() {
         Item[] dropItem = {Jubah.biasa(),Jubah.langka(), Jubah.epic() };
-        return musuh = new Enemy( 35,dropItem, 0.5,3, "Skeleton",80,12, 5);
+        return musuh = new Enemy(35 ,dropItem, 0.5, 3, "Skeleton", 150, 45, 15);
     }
       public static Enemy bangunDarkKnight() {
         Item[] dropItem = {Sword.epic(),Busur.epic(),Potion.Epic() };
-        return musuh = new Enemy( 60, dropItem,0.5, 4, "DarkKnight", 120,18,8);
+        return musuh = new Enemy(60, dropItem,0.5, 4, "DarkKnight", 200, 55, 35);
     }
        public static Enemy bangunBossDragon() {
         Item[] dropItem = {};
-        return musuh = new Enemy( 150,
-                dropItem,1.0,5,"Dragon",250, 25,12);
+        return musuh = new Enemy(150, dropItem, 1.0, 5, "Dragon", 500, 100, 50);
     }
 }
