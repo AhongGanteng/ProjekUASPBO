@@ -46,7 +46,7 @@ public class Floor{
     }
     /**
      * cek lantai apakah sudah clear
-     * @return true ot false
+     * @return true or false
      */
     public boolean isClear() {
         return true;
@@ -110,6 +110,7 @@ public class Floor{
         System.out.println("=======================");
         player.heal(player.getMaxHp());
         player.resetCooldown();
+        player.kosongkanCooldown();
         System.out.println(" HP player di pulihkan");
         System.out.println(" Cooldown skill direset");
         System.out.println("");

@@ -48,7 +48,7 @@ public class Archer extends Hero{
         if (!isSkillReady()) {
             System.out.println("Piercing Arror belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
         } else {
-            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
+            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8 + 3);
             System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
             target.kenaDamage(damage);
             resetCooldown();

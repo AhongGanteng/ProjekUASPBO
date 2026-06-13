@@ -11,14 +11,12 @@ public class Inventory {
     private int maxSlots;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
-    private Potion equippedPotion;
     
     public Inventory(int maxSlots) {
         this.potions = new ArrayList<>();
         this.maxSlots = maxSlots;
         this.equippedWeapon = null;
         this.equippedArmor = null;
-        this.equippedPotion = null;
     }
 
     public List<Potion> getPotions() {
@@ -27,14 +25,6 @@ public class Inventory {
 
     public int getMaxSlots() {
         return maxSlots;
-    }
-
-    public Weapon EquipWeapon() {
-        return equippedWeapon;
-    }
-
-    public Armor EquipArmor() {
-        return equippedArmor;
     }
     /**
      * cek apakah inventori full
@@ -49,29 +39,29 @@ public class Inventory {
      * @return true atau false
      */ 
     public boolean addItem (Potion ramuan) {
+        for (Potion ada : potions) {
+            if (ada.getNama().equals(ramuan.getNama())) {
+                ada.setQuantity(ada.getQuantity() + ramuan.getQuantity());
+                System.out.println(ramuan.getNama() + " ditambahkan ke inventory");
+                return true;
+            }
+        }
         if (isFull()) {
             System.out.println("Inventory sudah penuh!");
             return false;
         }
-        for (Potion ada : potions) {
-            if (ada.getNama().equals(ada)) {
-                ada.setQuantity(ada.getQuantity() + ramuan.getQuantity());
-                System.out.println(ramuan.getNama() + " ditambahkan kedalam inventory");
-                return true;
-            }
-        }
         potions.add(ramuan);
-        System.out.println(ramuan.getNama() + "ditambahkan ke inventory ");
+        System.out.println(ramuan.getNama() + " ditambahkan ke inventory ");
         return true;
     }
     
     /**
      * Menghapus item dari inventory
-     * @param items
+     * @param ramuan
      * @return true atau false
      */
-    public boolean removeItem(Item items) {
-        return this.potions.remove(items);
+    public boolean removeItem(Potion ramuan) {
+        return this.potions.remove(ramuan);
     }
     
     /**
@@ -108,6 +98,9 @@ public class Inventory {
         if (equippedWeapon != null) {
             System.out.println("Senjata lama dibuang, diganti oleh " + senjata.getNama());
         }
+        if (true) {
+            
+        }
         equippedWeapon = senjata;
         System.out.println("Equip senjata: " + senjata.getNama() + " ATK +" + senjata.getBonusSerangan());
     }
@@ -132,6 +125,7 @@ public class Inventory {
     public void usePotion(Potion ramuan, Hero target) {
         if (!potions.contains(ramuan)) {
             System.out.println(ramuan.getNama() + " tidak ada di inventory");
+            return;
         }
         ramuan.pake(target);
         if (ramuan.isEmpty()) {
@@ -145,7 +139,7 @@ public class Inventory {
      * @return bonus serangan
      */
     public int getWeaponAtkBonus() {
-        if (EquipWeapon() != null) {
+        if (getEquippedWeapon() != null) {
             return equippedWeapon.getBonusSerangan();
         } else {
             return 0;
@@ -157,7 +151,7 @@ public class Inventory {
      * @return bonus pertahanan
      */
     public int getArmorDefBonus() {
-        if (EquipArmor() != null) {
+        if (getEquippedArmor() != null) {
             return equippedArmor.getBonusKetahanan();
         } else {
             return 0;
@@ -178,13 +172,5 @@ public class Inventory {
 
     public void setEquippedArmor(Armor equippedArmor) {
         this.equippedArmor = equippedArmor;
-    }
-
-    public Potion getEquippedPotion() {
-        return equippedPotion;
-    }
-
-    public void setEquippedPotion(Potion equippedPotion) {
-        this.equippedPotion = equippedPotion;
     }
 }

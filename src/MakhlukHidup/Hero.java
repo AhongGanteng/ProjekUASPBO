@@ -46,7 +46,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
      */
     @Override
     public void kenaDamage(int damage) {
-        int tahan = Math.max(1, damage + (getKetahanan() - penyimpanan.getArmorDefBonus()));
+        int tahan = Math.max(1, damage - (getKetahanan() + penyimpanan.getArmorDefBonus()));
         setHp(getHp() - tahan);
     }
     /**
@@ -66,8 +66,8 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
         System.out.printf ("║ Nama  : %-17s║%n", getNama());
         System.out.printf ("║ Class : %-17s║%n", heroClass);
         System.out.printf ("║ HP    : %d/%-14d║%n", getHp(), getMaxHp());
-        System.out.printf ("║ ATK   : %-17d║%n", getSerangan());
-        System.out.printf ("║ DEF   : %-17d║%n", getKetahanan());
+        System.out.printf ("║ ATK   : %-17d║%n", getSerangan() + penyimpanan.getWeaponAtkBonus());
+        System.out.printf ("║ DEF   : %-17d║%n", getKetahanan() + penyimpanan.getArmorDefBonus());
         System.out.printf ("║ Skill : %-17s║%n", isSkillReady() ? "READY" : "Cooldown: " + cooldownSekarang);
         System.out.println("╚══════════════════════════╝");
     }
