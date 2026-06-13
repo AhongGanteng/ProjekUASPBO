@@ -20,7 +20,7 @@ public class Archer extends Hero{
      * @param nama 
      */
     public Archer(String nama) {
-        super(nama, 100, 20, 6, "Archer", 3);
+        super(nama, 110, 25, 8, "Archer", 3);
         getPenyimpanan().equipWeapon(Busur.Default());
         getPenyimpanan().equipArmor(Jubah.Default());
     }

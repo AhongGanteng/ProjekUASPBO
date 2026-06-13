@@ -8,7 +8,6 @@ public class levelSystem {
     private int expSekarang;
     private int expPerLevel;
     private final int expAwal = 100;
-    private final int pertumbuhanExp = 100;
 
     public levelSystem() {
         this.level = 1;
@@ -55,13 +54,13 @@ public class levelSystem {
         target.setKetahanan(target.getKetahanan() + peningkatanDef);
         target.heal(peningkatanHp);
         
-        System.out.println("╔══════════════════════════╗");
-        System.out.println("║     ★ LEVEL UP! ★        ║");
-        System.out.printf( "║  Level  : %-15d ║%n", level);
-        System.out.printf( "║  ATK +  : %-15d ║%n", peningkatanAtk);
-        System.out.printf( "║  DEF +  : %-15d ║%n", peningkatanDef);
-        System.out.printf( "║  MaxHP +: %-15d ║%n", peningkatanHp);
-        System.out.println("╚══════════════════════════╝");
+        System.out.println("+--------------------+");
+        System.out.println("|     ★ LEVEL UP! ★        |");
+        System.out.printf( "|  Level  : %-15d ║%n", level);
+        System.out.printf( "|  ATK +  : %-15d ║%n", peningkatanAtk);
+        System.out.printf( "|  DEF +  : %-15d ║%n", peningkatanDef);
+        System.out.printf( "|  MaxHP +: %-15d ║%n", peningkatanHp);
+        System.out.println("+--------------------+");
     }
     /**
      * damage serangan akan meningkat setiap naik level

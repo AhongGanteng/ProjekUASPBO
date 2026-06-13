@@ -66,14 +66,14 @@ public class GameManager {
         System.out.println("|         PILIH CLASS HERO          |");
         System.out.println("|-----------------------------------|");
         System.out.println("|  [1] Warrior                      |");
-        System.out.println("|      HP: 150 | ATK: 28 | DEF: 20  |"); // sudah include weapon+armor
+        System.out.println("|      HP: 150 | ATK: 18 | DEF: 12  |"); // sudah include weapon+armor
         System.out.println("|      Skill  : Shield Bash         |");
         System.out.println("|      Passive: Toughness           |");
         System.out.println("|      Senjata: Wooden Sword        |");
         System.out.println("|      Armor  : Leather Armor       |");
         System.out.println("|-----------------------------------|");
         System.out.println("|  [2] Archer                       |");
-        System.out.println("|      HP: 110 | ATK: 30 | DEF: 11  |"); // sudah include weapon+armor
+        System.out.println("|      HP: 110 | ATK: 25 | DEF: 8  |"); // sudah include weapon+armor
         System.out.println("|      Skill  : Piercing Arrow      |");
         System.out.println("|      Passive: Critical Shot       |");
         System.out.println("|      Senjata: Wooden Bow          |");
@@ -86,7 +86,7 @@ public class GameManager {
         if (nama.isEmpty()) {
             nama = "Hermawan";
         }
-        Hero pilihan =  null; 
+        Hero pilihan = null; 
         switch (pilih) {
             case 1 -> pilihan = new Warrior(nama);
             default ->pilihan = new Archer(nama);
