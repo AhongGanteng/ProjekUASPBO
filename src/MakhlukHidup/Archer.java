@@ -44,16 +44,29 @@ public class Archer extends Hero{
      * @param target, target serangan
      */
     @Override
-    public void useSkill(Attackable target) {
-        if (!isSkillReady()) {
-            System.out.println("Piercing Arror belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
-        } else {
-            int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
-            System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
-            target.kenaDamage(damage);
-            resetCooldown();
+public void useSkill(Attackable target) {
+    if (!isSkillReady()) {
+        System.out.println("Piercing Arrow belum siap (CD: "  + getCooldownSekarang() + " turn lagi)");
+    } else {
+
+        int damage = (int) ((getSerangan()
+                + getPenyimpanan().getWeaponAtkBonus()) * 1.8);
+
+        System.out.println(getNama() + " menggunakan skill Piercing Arrow! ("+ damage + " damage)");
+
+        target.kenaDamage(damage);
+
+        // Tambahan efek DEF -3
+        if (target instanceof Enemy enemy) {
+            enemy.setKetahanan(Math.max(0, enemy.getKetahanan() - 3) );
+
+            System.out.println(enemy.getNama()+ " kehilangan 3 DEF!");
         }
+
+        resetCooldown();
     }
+}
+    
     /**
      * Nama skill untuk class Archer
      * @return nama skill nya
