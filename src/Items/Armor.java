@@ -24,10 +24,8 @@ public abstract class Armor extends Item {
         
     } 
     @Override
-    public void pake (Hero target) {
-        
-        target.setKetahanan(target.getKetahanan()+ bonusKetahanan);
-        System.out.println(target.getNama()+ "memakai armor" + getNama());
-        
+    public void pake(Hero target) {
+        target.getPenyimpanan().equipArmor(this);
+        System.out.println(target.getNama() + " memakai armor " + getNama());
     }
 }

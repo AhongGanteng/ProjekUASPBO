@@ -69,6 +69,7 @@ public class Potion extends Item {
 
     }
 
+    @Override
     public String getDeskripsi() {
         return "[" + getRarity() + "] " + getNama() + " (heal " + jumlahPemulihan + ")";
 

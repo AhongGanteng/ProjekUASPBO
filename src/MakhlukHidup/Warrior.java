@@ -67,11 +67,12 @@ public class Warrior extends Hero{
      * hal yang bisa mengaktifkan skill pasif class Warrior
      */
     @Override
-    public void triggerPasif(){
+    public void triggerPasif() {
+        System.out.println("DEBUG triggerPasif dipanggil, flag=" + darahTersisaSetengah + " HP=" + getHp() + " maxHP/2=" + getMaxHp()/2);
         if (!darahTersisaSetengah && getHp() < getMaxHp() / 2) {
             setKetahanan(getKetahanan() + 5);
             darahTersisaSetengah = true;
-            System.out.println("[Passive: Toughness] HP di bawah 50%! DEF +5 (DEF sekarang: " + getKetahanan() + ")");
+            System.out.println("[Passive: Toughness] DEF +5 (DEF sekarang: " + getKetahanan() + ")");
         }
     }
     /**
@@ -87,14 +88,6 @@ public class Warrior extends Hero{
         }
     }
 
-    @Override
-    public void resetPasif() {
-        if (darahTersisaSetengah) {
-            setKetahanan(getKetahanan()-5);
-        }
-        darahTersisaSetengah = getHp() >= getMaxHp() * 0.5;
-    }
-    
     @Override
     public String getDeskripsi() {
         return super.getDeskripsi()+ "\nPasif: Serangan meningkat saat HP di bawah 50%";

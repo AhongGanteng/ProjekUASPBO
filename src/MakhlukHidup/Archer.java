@@ -85,9 +85,4 @@ public class Archer extends Hero{
     public String getNamaPasif() {
         return "Critical Shot (+25% damage)";
     }
-    
-    @Override 
-    public void resetPasif() {
-        
-    }
 }

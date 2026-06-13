@@ -33,10 +33,8 @@ public abstract class Item implements Deskripsi, BisaDipake{
         this.rarity = rarity;
     }
     @Override
-    public String getDeskripsi() {
-       return "(" + rarity + ") " + nama;
-    }
- 
+    public abstract String getDeskripsi();
+    
     @Override
     public void showStatus(){
         System.out.println("\nItem");
@@ -44,5 +42,6 @@ public abstract class Item implements Deskripsi, BisaDipake{
         System.out.println("Rarity :" + rarity);
         System.out.println("Tipe :" + getItemType());
     }
-     public abstract String getItemType();
+    @Override
+    public abstract String getItemType();
 }

@@ -80,7 +80,6 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public abstract void triggerPasif();
     //nama pasif unik dari setiap class hero
     public abstract String getNamaPasif();
-    public abstract void resetPasif();
     public void kosongkanCooldown() {
         this.cooldownSekarang = 0; // ← cooldown siap dipakai di awal battle
     }

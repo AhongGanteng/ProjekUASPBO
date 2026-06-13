@@ -19,7 +19,6 @@ public class BattleSystem {
     }
 
     public boolean mulaiBattle(Hero player, Enemy musuh) {
-        player.resetPasif();
         tampilIntroBattle(player, musuh);
         boolean heroFirst = true;
         while (player.isAlive() && musuh.isAlive()) {

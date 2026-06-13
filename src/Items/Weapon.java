@@ -42,7 +42,7 @@ public abstract class Weapon extends Item {
         return;
     }
     target.getPenyimpanan().equipWeapon(this);
-    System.out.println(target.getNama() + " memakai senjata " + getNama()); // ← tambah spasi
+    System.out.println(target.getNama() + " memakai senjata " + getNama()); 
         
     }
 }

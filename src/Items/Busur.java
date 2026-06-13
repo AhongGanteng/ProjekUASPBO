@@ -23,15 +23,15 @@ public class Busur extends Weapon{
     }
     
     public static Busur biasa() {
-        return new Busur("Busur Pemburu", "Biasa", "Archer", 5);
+        return new Busur("Busur Pemburu", "Biasa", "Archer", 10);
     }
     
     public static Busur langka() {
-        return new Busur("Busur Elven", "Langka", "Archer", 8);
+        return new Busur("Busur Elven", "Langka", "Archer", 18);
     }
     
     public static Busur epic() {
-        return new Busur("Busur Naga", "Epic", "Archer", 10);
+        return new Busur("Busur Naga", "Epic", "Archer", 30);
     }
     
     @Override
