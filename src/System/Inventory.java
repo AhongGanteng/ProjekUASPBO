@@ -98,9 +98,6 @@ public class Inventory {
         if (equippedWeapon != null) {
             System.out.println("Senjata lama dibuang, diganti oleh " + senjata.getNama());
         }
-        if (true) {
-            
-        }
         equippedWeapon = senjata;
         System.out.println("Equip senjata: " + senjata.getNama() + " ATK +" + senjata.getBonusSerangan());
     }

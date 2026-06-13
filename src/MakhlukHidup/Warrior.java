@@ -4,6 +4,7 @@
  */
 package MakhlukHidup;
 import Interface.*;
+import Items.*;
 import System.*;
 /**
  * salah satu anak dari class hero, 
@@ -24,6 +25,8 @@ public class Warrior extends Hero{
     public Warrior(String nama) {
         super(nama, 150, 18, 12, "Warrior", 3);
         this.darahTersisaSetengah = false;
+        getPenyimpanan().equipWeapon(Sword.Default());
+        getPenyimpanan().equipArmor(Jubah.Default());
     }
     /**
      * damage serangan yang diberikan oleh player
@@ -86,6 +89,9 @@ public class Warrior extends Hero{
 
     @Override
     public void resetPasif() {
+        if (darahTersisaSetengah) {
+            setKetahanan(getKetahanan()-5);
+        }
         darahTersisaSetengah = getHp() >= getMaxHp() * 0.5;
     }
     

@@ -48,6 +48,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi{
     public void kenaDamage(int damage) {
         int tahan = Math.max(1, damage - (getKetahanan() + penyimpanan.getArmorDefBonus()));
         setHp(getHp() - tahan);
+        triggerPasif();
     }
     /**
      * cek apakah masih hidup

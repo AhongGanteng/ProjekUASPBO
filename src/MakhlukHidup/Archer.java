@@ -1,5 +1,6 @@
 package MakhlukHidup;
 import Interface.*;
+import Items.*;
 import System.*;
 /**
  * salah satu anak dari class hero, 
@@ -20,6 +21,8 @@ public class Archer extends Hero{
      */
     public Archer(String nama) {
         super(nama, 100, 20, 6, "Archer", 3);
+        getPenyimpanan().equipWeapon(Busur.Default());
+        getPenyimpanan().equipArmor(Jubah.Default());
     }
     /**
      * damage serangan yang diberikan oleh player
@@ -46,7 +49,7 @@ public class Archer extends Hero{
     @Override
     public void useSkill(Attackable target) {
         if (!isSkillReady()) {
-            System.out.println("Piercing Arror belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
+            System.out.println("Piercing Arrow belum siap (CD: " + getCooldownSekarang() + " turn lagi)");
         } else {
             int damage = (int) ((getSerangan() + getPenyimpanan().getWeaponAtkBonus()) * 1.8 + 3);
             System.out.println(getNama() + " menggunakan skill Piercing Arror! (" + damage + ") damage");
@@ -60,7 +63,7 @@ public class Archer extends Hero{
      */
     @Override 
     public String getNamaSkill() {
-        return "Piercing Arror (CD: " + getCooldownSekarang() + " turn lagi)";
+        return "Piercing Arrow (CD: " + getCooldownSekarang() + " turn lagi)";
     }
     //tampilkan deskripsi player
     @Override

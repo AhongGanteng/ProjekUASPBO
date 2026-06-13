@@ -4,11 +4,13 @@ package Items;
  */
 import MakhlukHidup.*;
 public abstract class Weapon extends Item {
+    private String classKhusus;
     private int bonusSerangan; //bonus ketahananannya
 
     public Weapon(String nama, String rarity, String classKhusus, int bonusSerangan) {
         super(nama, rarity);
         this.bonusSerangan = bonusSerangan;
+        this.classKhusus = classKhusus;
     }
 
     public int getBonusSerangan() {
@@ -17,6 +19,14 @@ public abstract class Weapon extends Item {
 
     public void setBonusSerangan(int bonusSerangan) {
         this.bonusSerangan = bonusSerangan;
+    }
+
+    public String getClassKhusus() {
+        return classKhusus;
+    }
+
+    public void setClassKhusus(String classKhusus) {
+        this.classKhusus = classKhusus;
     }
     
     public abstract String getJenisSenjata();
@@ -27,8 +37,12 @@ public abstract class Weapon extends Item {
     } 
     @Override
     public void pake (Hero target) {
-        target.setSerangan(target.getSerangan() + bonusSerangan);
-        System.out.println(target.getNama() + "memakai senjata" + getNama());
+        if (!target.getHeroClass().equals(classKhusus)) {
+        System.out.println("✗ " + target.getHeroClass() + " tidak bisa memakai " + getNama() + "!");
+        return;
+    }
+    target.getPenyimpanan().equipWeapon(this);
+    System.out.println(target.getNama() + " memakai senjata " + getNama()); // ← tambah spasi
         
     }
 }
