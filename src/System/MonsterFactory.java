@@ -27,23 +27,34 @@ public class MonsterFactory {
      * @return 
      */
     public static Enemy bangunSlime() {
-        Item[] dropItem = {HealthPotion.Biasa(), HealthPotion.Langka(), HealthPotion.Epic()};
-        return musuh = new Enemy(10, dropItem, 0.5, 1, "Slime", 30, 5, 1);
-    }
-    public static Enemy bangunGoblin() {
-        Item[] dropItem = {Sword.biasa(), Busur.biasa(), Sword.langka(), Busur.langka()};
-        return musuh = new Enemy(10, dropItem, 0.5, 2, "Goblin", 30, 5, 1);
-    }
-    public static Enemy bangunSkeleton() {
-        Item[] dropItem = {Jubah.biasa(), Jubah.langka(), Jubah.epic()};
-        return musuh = new Enemy(10, dropItem, 0.5, 3, "Skeleton", 30, 5, 1);
-    }
-    public static Enemy bangunDarkKnight() {
-        Item[] dropItem = {Sword.epic(), Busur.epic(), HealthPotion.Epic()};
-        return musuh = new Enemy(10, dropItem, 0.5, 4, "DarkKnight", 30, 5, 1);
-    }
-    public static Enemy bangunBossDragon() {
-        Item[] dropItem = {};
-        return musuh = new Enemy(10, dropItem, 1.0, 5, "Dragon", 30, 5, 1);
-    }
+    Item[] dropItem = {HealthPotion.Biasa(),HealthPotion.Langka(),HealthPotion.Epic()};
+
+    return musuh = new Enemy(
+            10,     // EXP
+            dropItem,
+            0.5,
+            1,
+            "Slime",
+            30,     // HP
+            5,      // ATK
+            1       // DEF
+    );
+}
+   public static Enemy bangunGoblin() {
+    Item[] dropItem = { Sword.biasa(),Busur.biasa(), Sword.langka(),Busur.langka()};
+    return musuh = new Enemy(20,dropItem,0.5, 2,"Goblin", 50, 8,3 );
+}
+   public static Enemy bangunSkeleton() {
+    Item[] dropItem = {Jubah.biasa(),Jubah.langka(), Jubah.epic() };
+    return musuh = new Enemy( 35,dropItem, 0.5,3, "Skeleton",80,12, 5);
+}
+  public static Enemy bangunDarkKnight() {
+    Item[] dropItem = {Sword.epic(),Busur.epic(),HealthPotion.Epic() };
+    return musuh = new Enemy( 60, dropItem,0.5, 4, "DarkKnight", 120,18,8);
+}
+   public static Enemy bangunBossDragon() {
+    Item[] dropItem = {};
+    return musuh = new Enemy( 150,
+            dropItem,1.0,5,"Dragon",250, 25,12);
+}
 }
