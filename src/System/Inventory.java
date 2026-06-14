@@ -1,19 +1,22 @@
 package System;
+
 import java.util.ArrayList;
 import java.util.List;
 import Items.*;
 import MakhlukHidup.*;
+
 /**
  * Penyimpanan untuk player
  */
 public class Inventory {
-    private List<Potion> potions;
-    private int maxSlots;
-    private Weapon equippedWeapon;
-    private Armor equippedArmor;
-    
+
+    private List<Potion> potions; //daftar potion yg disimpan di inventory
+    private int maxSlots; //batas slot potion yg disimpan
+    private Weapon equippedWeapon; //senjata yang dipakai hero
+    private Armor equippedArmor; //armor yg dipakai hero
+    //constructor berparameter, untuk buat objek Inventory baru
     public Inventory(int maxSlots) {
-        this.potions = new ArrayList<>();
+        this.potions = new ArrayList<>(); //inisialisasi list potion sbg list kosong
         this.maxSlots = maxSlots;
         this.equippedWeapon = null;
         this.equippedArmor = null;
@@ -26,19 +29,21 @@ public class Inventory {
     public int getMaxSlots() {
         return maxSlots;
     }
+
     /**
      * cek apakah inventori full
-     * @return true jika ukuran item sama dengan maksimum slot inventori 
+     * @return true jika ukuran item sama dengan maksimum slot inventori
      */
     public boolean isFull() {
         return this.potions.size() == maxSlots;
     }
+
     /**
      * menambahkankan item ke inventory
      * @param ramuan
      * @return true atau false
-     */ 
-    public boolean addItem (Potion ramuan) {
+     */
+    public boolean addItem(Potion ramuan) {
         for (Potion ada : potions) {
             if (ada.getNama().equals(ramuan.getNama())) {
                 ada.setQuantity(ada.getQuantity() + ramuan.getQuantity());
@@ -54,7 +59,7 @@ public class Inventory {
         System.out.println(ramuan.getNama() + " ditambahkan ke inventory ");
         return true;
     }
-    
+
     /**
      * Menghapus item dari inventory
      * @param ramuan
@@ -63,7 +68,7 @@ public class Inventory {
     public boolean removeItem(Potion ramuan) {
         return this.potions.remove(ramuan);
     }
-    
+
     /**
      * Tampilin isi inventory
      */
@@ -89,7 +94,7 @@ public class Inventory {
             System.out.println("Armor: - ");
         }
     }
-    
+
     /**
      * senjata yang dipake player
      * @param senjata, obyek senjata yang player dapatkan
@@ -101,7 +106,7 @@ public class Inventory {
         equippedWeapon = senjata;
         System.out.println("Equip senjata: " + senjata.getNama() + " ATK +" + senjata.getBonusSerangan());
     }
-    
+
     /**
      * armor yang dipake player
      * @param armor, obyek armor yang player dapatkan
@@ -113,7 +118,7 @@ public class Inventory {
         equippedArmor = armor;
         System.out.println("Equip senjata: " + armor.getNama() + " DEF +" + armor.getBonusKetahanan());
     }
-    
+
     /**
      * potion dipakai player
      * @param ramuan, ramuan yang akan dipakai
@@ -130,7 +135,7 @@ public class Inventory {
             System.out.println("Potion habis");
         }
     }
-    
+
     /**
      * ambil bonus serangan dari senjata yang dipakai
      * @return bonus serangan
@@ -142,7 +147,7 @@ public class Inventory {
             return 0;
         }
     }
-    
+
     /**
      * ambil bonus pertahanan dari armor yang dipakai
      * @return bonus pertahanan

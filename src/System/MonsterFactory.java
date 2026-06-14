@@ -40,19 +40,23 @@ public class MonsterFactory {
                 5       // DEF
         );
     }
-       public static Enemy bangunGoblin() {
+    /**
+     * ini untuk munculin monsternya
+     * @return 
+     */
+    public static Enemy bangunGoblin() {
         Item[] dropItem = {Sword.biasa(),Busur.biasa(), Sword.langka(),Busur.langka()};
         return musuh = new Enemy(20, dropItem, 0.5, 2, "Goblin", 100, 20, 10);
     }
-       public static Enemy bangunSkeleton() {
+    public static Enemy bangunSkeleton() {
         Item[] dropItem = {Armor.biasa(),Armor.langka(), Armor.epic() };
         return musuh = new Enemy(35 ,dropItem, 0.5, 3, "Skeleton", 150, 30, 15);
     }
-      public static Enemy bangunDarkKnight() {
+    public static Enemy bangunDarkKnight() {
         Item[] dropItem = {Sword.epic(),Busur.epic(),Potion.Epic() };
         return musuh = new Enemy(60, dropItem,0.5, 4, "DarkKnight", 200, 45, 35);
     }
-       public static Enemy bangunBossDragon() {
+    public static Enemy bangunBossDragon() {
         Item[] dropItem = {};
         return musuh = new Enemy(150, dropItem, 1.0, 5, "Dragon", 500, 65, 40);
     }

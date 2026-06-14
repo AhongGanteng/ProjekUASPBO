@@ -1,35 +1,36 @@
 package MakhlukHidup;
+
 import Interface.*;
 import Items.*;
 import System.*;
+
 /**
- * salah satu anak dari class hero, 
- * senjatanya busur, 
- * punya pasif peningkatan damage 2 kali lipat dengan kesempatan 25%, 
- * dan punya skill yaitu damage +80% dan pengurangan defense musuh -3 dengan cooldown 3 turn
+ * salah satu anak dari class hero, senjatanya busur, punya pasif peningkatan
+ * damage 2 kali lipat dengan kesempatan 25%, dan punya skill yaitu damage +80%
+ * dan pengurangan defense musuh -3 dengan cooldown 3 turn
  */
-public class Archer extends Hero{
+public class Archer extends Hero {
+
     private final double critChange = 0.25; //kesempatan untuk mendapatkan penambahan damage
     private final int critticalDamage = 2; //damage akan di kali 2
+
     /**
-     * nama player
-     * darah warrior = 100
-     * damage serangan = 20
-     * ketahanan = 6
-     * jeda penggunaan skill = 3
-     * @param nama 
+     * nama player darah warrior = 100 damage serangan = 20 ketahanan = 6 jeda
+     * penggunaan skill = 3
+     * @param nama
      */
     public Archer(String nama) {
         super(nama, 110, 25, 8, "Archer", 3);
         getPenyimpanan().equipWeapon(Busur.Default());
         getPenyimpanan().equipArmor(Armor.Default());
     }
+
     /**
      * damage serangan yang diberikan oleh player
      * @param target, targetnya adalah obyek Enemy
      */
     @Override
-    public void serang (Attackable target) {
+    public void serang(Attackable target) {
         int baseDamage = getSerangan() + getPenyimpanan().getWeaponAtkBonus();
         boolean isCrit = Math.random() < critChange;
         if (isCrit) {
@@ -41,9 +42,10 @@ public class Archer extends Hero{
             target.kenaDamage(baseDamage);
         }
     }
+
     /**
-     * Skill yang dimiliki oleh class Warrior
-     * peningkatan damage +80% dan ketahanan musuh -3
+     * Skill yang dimiliki oleh class Warrior peningkatan damage +80% dan
+     * ketahanan musuh -3
      * @param target, target serangan
      */
     @Override
@@ -57,32 +59,35 @@ public class Archer extends Hero{
             resetCooldown();
         }
     }
+
     /**
      * Nama skill untuk class Archer
      * @return nama skill nya
      */
-    @Override 
+    @Override
     public String getNamaSkill() {
         return "Piercing Arrow (CD: " + getCooldownSekarang() + " turn lagi)";
     }
-    //tampilkan deskripsi player
+
+    //tampilkan deskripsi player archer
     @Override
     public String getDeskripsi() {
-        return super.getDeskripsi() + 
-            String.format("\nPasif: %.0f%% peluang critical, damage x%d",critChange* 100, critticalDamage);
+        return super.getDeskripsi()
+                + String.format("\nPasif: %.0f%% peluang critical, damage x%d", critChange * 100, critticalDamage);
     }
+
     /**
      * hal yang bisa mengaktifkan skill pasif class Archer
      */
     @Override
-    public void triggerPasif(){
-        
+    public void triggerPasif() {
+
     }
+
     /**
      * nama pasifnya
-     * @return String
      */
-    @Override 
+    @Override
     public String getNamaPasif() {
         return "Critical Shot (+25% damage)";
     }
