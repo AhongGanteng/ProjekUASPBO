@@ -19,9 +19,8 @@ public class BattleSystem {
     }
 
     public boolean mulaiBattle(Hero player, Enemy musuh) {
-        player.resetPasif();
         tampilIntroBattle(player, musuh);
-        boolean heroFirst = Math.random() < 0.5;
+        boolean heroFirst = true;
         while (player.isAlive() && musuh.isAlive()) {
             if (heroFirst) {
                 if (!giliranPlayer(player, musuh)) {
@@ -182,7 +181,7 @@ public class BattleSystem {
     public void aturItemDrop(Hero player, Item drop) {
         int pilih;
         System.out.println("");
-        if (drop instanceof Jubah || drop instanceof Sword || drop instanceof Busur) {
+        if (drop instanceof Armor || drop instanceof Sword || drop instanceof Busur) {
             System.out.println("[1] Equip " + drop.getNama() + "[" + drop.getRarity() + "]");
             System.out.println("[2] Buang " + drop.getNama() + "[" + drop.getRarity() + "]");
             System.out.print("Pilih: ");

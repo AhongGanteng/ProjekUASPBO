@@ -1,19 +1,22 @@
 package Items;
+
 /**
  * Parent class untuk weapon, armor dan potion
  */
 import Interface.*;
 import MakhlukHidup.*;
+
 /**
  * mengimplements dari class Deskripsi dan BisaDipake
  * @author LENOVO
  */
-public abstract class Item implements Deskripsi, BisaDipake{
+public abstract class Item implements Deskripsi, BisaDipake {
+
     private String nama; //nama item
     private String rarity; //tingkat kelangkaan (biasa, langka, epic)
 
     public Item(String nama, String rarity) {
-        this.nama = nama; 
+        this.nama = nama;
         this.rarity = rarity;
     }
 
@@ -32,17 +35,18 @@ public abstract class Item implements Deskripsi, BisaDipake{
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
+
     @Override
-    public String getDeskripsi() {
-       return "(" + rarity + ") " + nama;
-    }
- 
+    public abstract String getDeskripsi();
+
     @Override
-    public void showStatus(){
+    public void showStatus() {
         System.out.println("\nItem");
         System.out.println("Nama :" + nama);
         System.out.println("Rarity :" + rarity);
         System.out.println("Tipe :" + getItemType());
     }
-     public abstract String getItemType();
+
+    @Override
+    public abstract String getItemType();
 }

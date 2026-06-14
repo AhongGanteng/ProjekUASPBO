@@ -1,10 +1,13 @@
 package System;
+
 import MakhlukHidup.*;
+
 /**
  * ini untuk ruangan battle khusus untuk monster biasa aja
  * @author LENOVO
  */
-public class BattleRoom extends Room{
+public class BattleRoom extends Room {
+
     private Enemy enemy;
 
     public BattleRoom(Enemy enemy) {
@@ -15,16 +18,15 @@ public class BattleRoom extends Room{
     public Enemy getEnemy() {
         return enemy;
     }
-    
+
     @Override
-    public void enter(Hero player){
+    public void enter(Hero player) {
         System.out.println("-- Memasuki Battle Room --");
-        System.out.println("Musuh   : " + enemy.getNama());
-        System.out.println("HP musuh: " + enemy.getHp() + " / " + enemy.getMaxHp());
+        System.out.println(getDeskripsi());
         System.out.println("==========================");
     }
     //tampilkan deskripsi player
-    
+
     @Override
     public String getDeskripsi() {
         return "Battle Room - Musuh: " + enemy.getNama() + " (HP " + enemy.getHp() + ")";

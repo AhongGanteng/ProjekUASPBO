@@ -1,12 +1,15 @@
 package System;
+
 import MakhlukHidup.*;
 import Lantai.*;
 import java.util.Scanner;
+
 /**
  *
  * @author LENOVO
  */
 public class GameManager {
+
     private Scanner input;
     private BattleSystem sistemBattle;
     private Hero player;
@@ -15,7 +18,7 @@ public class GameManager {
         this.input = new Scanner(System.in);
         this.sistemBattle = new BattleSystem(input);
     }
-    
+
     public int getChoice(int min, int max) {
         int pilih = 0;
         do {
@@ -24,22 +27,22 @@ public class GameManager {
                 input.next();
             }
             pilih = input.nextInt();
-            input.nextLine(); 
+            input.nextLine();
         } while (pilih < min || pilih > max);
         return pilih;
     }
-    
+
     public void showTitle() {
         System.out.println("|--------------------------------------|");
         System.out.println("|                                      |");
-        System.out.println("|           DUNGEON CLAWLER            |");
+        System.out.println("|           DUNGEON CRAWLER            |");
         System.out.println("|         TURN-BASED ADVENTURE         |");
         System.out.println("|                                      |");
         System.out.println("|--------------------------------------|");
         System.out.println("");
         tekanEnterUntukContinue();
     }
-    
+
     public void showGameOver() {
         System.out.println("|--------------------------------------|");
         System.out.println("|                                      |");
@@ -50,7 +53,7 @@ public class GameManager {
         System.out.println("|                                      |");
         System.out.println("|--------------------------------------|");
     }
-    
+
     public void showGameClear() {
         System.out.println("|--------------------------------------|");
         System.out.println("|                                      |");
@@ -60,20 +63,20 @@ public class GameManager {
         System.out.println("|                                      |");
         System.out.println("|--------------------------------------|");
     }
-    
+
     public Hero bangunPlayer() {
         System.out.println("|-----------------------------------|");
         System.out.println("|         PILIH CLASS HERO          |");
         System.out.println("|-----------------------------------|");
         System.out.println("|  [1] Warrior                      |");
-        System.out.println("|      HP: 150 | ATK: 28 | DEF: 20  |"); // sudah include weapon+armor
+        System.out.println("|      HP: 150 | ATK: 18 | DEF: 12  |"); // sudah include weapon+armor
         System.out.println("|      Skill  : Shield Bash         |");
         System.out.println("|      Passive: Toughness           |");
         System.out.println("|      Senjata: Wooden Sword        |");
         System.out.println("|      Armor  : Leather Armor       |");
         System.out.println("|-----------------------------------|");
         System.out.println("|  [2] Archer                       |");
-        System.out.println("|      HP: 110 | ATK: 30 | DEF: 11  |"); // sudah include weapon+armor
+        System.out.println("|      HP: 110 | ATK: 25 | DEF: 8  |"); // sudah include weapon+armor
         System.out.println("|      Skill  : Piercing Arrow      |");
         System.out.println("|      Passive: Critical Shot       |");
         System.out.println("|      Senjata: Wooden Bow          |");
@@ -86,23 +89,25 @@ public class GameManager {
         if (nama.isEmpty()) {
             nama = "Hermawan";
         }
-        Hero pilihan =  null; 
+        Hero pilihan = null;
         switch (pilih) {
-            case 1 -> pilihan = new Warrior(nama);
-            default ->pilihan = new Archer(nama);
+            case 1 ->
+                pilihan = new Warrior(nama);
+            default ->
+                pilihan = new Archer(nama);
         }
         System.out.println("");
         System.out.println("Hero dibuat: " + pilihan.getDeskripsi());
         return pilihan;
     }
-    
+
     public void tekanEnterUntukContinue() {
         System.out.println("Tekan enter untuk lanjut......");
         this.input.nextLine();
-        
+
     }
-    
-    public int getPilihanPlayer (int min, int max) {
+
+    public int getPilihanPlayer(int min, int max) {
         int pilihan = 0;
         do {
             while (!input.hasNextInt()) {
@@ -114,16 +119,16 @@ public class GameManager {
         } while (pilihan > max || pilihan < min);
         return pilihan;
     }
-    
+
     public void start() {
         showTitle();
-        this.player = bangunPlayer(); 
+        this.player = bangunPlayer();
         System.out.println("");
         System.out.println("Selamat datang " + player.getNama() + "!");
         System.out.println("Silahkan masuk ke dungeon!");
         System.out.println("");
         tekanEnterUntukContinue();
-        
+
         for (int lantai = 1; lantai <= Floor.getJumlahRuangan(); lantai++) {
             Floor lantaiDungeon = new Floor(lantai);
             boolean selesai = lantaiDungeon.run(player, sistemBattle, input);
