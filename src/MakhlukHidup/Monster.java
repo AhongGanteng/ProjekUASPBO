@@ -60,3 +60,4 @@ public class Monster extends Enemy {
         System.out.println("Exp :" + getHadiahExp());
     }
 }
+

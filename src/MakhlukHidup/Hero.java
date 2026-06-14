@@ -121,7 +121,7 @@ public abstract class Hero extends Entity implements Attackable, Deskripsi {
     }
 
     /**
-     * sistem leveling lah pokoknya wkwkwk
+     * sistem leveling, tambah EXP
      * @param xp
      * @param player
      */

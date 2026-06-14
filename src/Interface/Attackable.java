@@ -23,3 +23,4 @@ public interface Attackable {
      */
     public boolean isAlive();
 }
+

@@ -18,3 +18,4 @@ public interface BisaDipake {
      */
     public String getItemType();
 }
+

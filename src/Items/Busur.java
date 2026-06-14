@@ -64,4 +64,5 @@ public class Busur extends Weapon {
     public String getJenisSenjata() {
         return "Busur";
     }
+
 }

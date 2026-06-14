@@ -16,3 +16,4 @@ public interface Deskripsi {
      */
     public String getDeskripsi();
 }
+

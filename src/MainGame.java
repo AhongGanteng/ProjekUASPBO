@@ -11,3 +11,4 @@ public class MainGame {
         game.start(); //mulai permainan dgn panggil method start() di GameManager
     }
 }
+
