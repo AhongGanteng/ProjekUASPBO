@@ -63,6 +63,7 @@ public class Warrior extends Hero{
     public String getNamaSkill() {
         return "Leap Attack (CD: " + getCooldownSekarang() + " turn lagi)";
     }
+    
     /**
      * hal yang bisa mengaktifkan skill pasif class Warrior
      */
