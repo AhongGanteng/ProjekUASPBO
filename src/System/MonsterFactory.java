@@ -45,7 +45,7 @@ public class MonsterFactory {
         return musuh = new Enemy(20, dropItem, 0.5, 2, "Goblin", 100, 20, 10);
     }
        public static Enemy bangunSkeleton() {
-        Item[] dropItem = {Jubah.biasa(),Jubah.langka(), Jubah.epic() };
+        Item[] dropItem = {Armor.biasa(),Armor.langka(), Armor.epic() };
         return musuh = new Enemy(35 ,dropItem, 0.5, 3, "Skeleton", 150, 30, 15);
     }
       public static Enemy bangunDarkKnight() {

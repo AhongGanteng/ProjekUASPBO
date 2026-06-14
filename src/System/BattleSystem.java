@@ -181,7 +181,7 @@ public class BattleSystem {
     public void aturItemDrop(Hero player, Item drop) {
         int pilih;
         System.out.println("");
-        if (drop instanceof Jubah || drop instanceof Sword || drop instanceof Busur) {
+        if (drop instanceof Armor || drop instanceof Sword || drop instanceof Busur) {
             System.out.println("[1] Equip " + drop.getNama() + "[" + drop.getRarity() + "]");
             System.out.println("[2] Buang " + drop.getNama() + "[" + drop.getRarity() + "]");
             System.out.print("Pilih: ");

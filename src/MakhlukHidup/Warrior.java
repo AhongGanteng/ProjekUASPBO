@@ -26,7 +26,7 @@ public class Warrior extends Hero{
         super(nama, 150, 18, 12, "Warrior", 3);
         this.darahTersisaSetengah = false;
         getPenyimpanan().equipWeapon(Sword.Default());
-        getPenyimpanan().equipArmor(Jubah.Default());
+        getPenyimpanan().equipArmor(Armor.Default());
     }
     /**
      * damage serangan yang diberikan oleh player

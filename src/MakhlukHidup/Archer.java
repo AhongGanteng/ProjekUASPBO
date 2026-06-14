@@ -22,7 +22,7 @@ public class Archer extends Hero{
     public Archer(String nama) {
         super(nama, 110, 25, 8, "Archer", 3);
         getPenyimpanan().equipWeapon(Busur.Default());
-        getPenyimpanan().equipArmor(Jubah.Default());
+        getPenyimpanan().equipArmor(Armor.Default());
     }
     /**
      * damage serangan yang diberikan oleh player
@@ -80,6 +80,7 @@ public class Archer extends Hero{
     }
     /**
      * nama pasifnya
+     * @return String
      */
     @Override 
     public String getNamaPasif() {

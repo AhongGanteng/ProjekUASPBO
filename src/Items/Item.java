@@ -44,4 +44,6 @@ public abstract class Item implements Deskripsi, BisaDipake{
     }
     @Override
     public abstract String getItemType();
+    @Override
+    public abstract void pake(Hero target);
 }
