@@ -4,12 +4,11 @@ import Interface.*;
 import Items.*;
 
 /**
- *
- * subclass dari Enemy
+ * subclass dari class Enemy
  */
-public class Monster extends Enemy {
+public class Monstera extends Enemy {
     /**
-     * constructor berparameter
+     * method constructor berparameter, untuk buat objek Mostera baru
      * @param hadiahExp
      * @param dropItem
      * @param dropChange
@@ -19,13 +18,10 @@ public class Monster extends Enemy {
      * @param serangan
      * @param ketahanan 
      */
-    public Monster(int hadiahExp, Item[] dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
-        super(hadiahExp, dropItem, dropChange, lantai, nama, maxHp, serangan, ketahanan); //mewarisi parameter dr Enemy
+    public Monstera(int hadiahExp, Item[] dropItem, double dropChange, int lantai, String nama, int maxHp, int serangan, int ketahanan) {
+        super(hadiahExp, dropItem, dropChange, lantai, nama, maxHp, serangan, ketahanan); //mewarisi parameter Enemy
     }
-    /**
-     * implementasi dr interface Attackable
-     * @param target 
-     */
+    //implementasi dr interface Attackable
     @Override
     public void serang(Attackable target) {
         int damage = Math.max(1, getSerangan());
@@ -33,18 +29,18 @@ public class Monster extends Enemy {
         target.kenaDamage(damage);
 
     }
-    //mewarisi dr class Enemy
+    //meng-override dr class Enemy
     @Override
     public String tipeMusuh() {
         return "Monster";
     }
 
-    //tampilkan deskripsi monster
+    //tampilkan deskripsi player
     @Override
     public String getDeskripsi() {
         return getNama() + "adalah monster dari lantai" + getLantai();
     }
-    //implementasi dari interface Attackable
+    //implementasi dr interface Attackable
     @Override
     public boolean isAlive() {
         return getHp() > 0;
